@@ -73,7 +73,7 @@ we do not strictly meet the JSON API error spec.
 `poetry install`
 
 ### Helpful Commands
-* `make format`: Fixes linting issues in `./pyll_json_errors`.
+* `make format`: Fixes linting issues automatically.
 * `make lint`: Lints code and outputs to console.
 * `make test`: Runs unit tests.
 
@@ -85,7 +85,7 @@ poetry run python ./path/to/script.py
 ```
 
 ### Driver Applications
-Various driver applications can be found in `./drivers`. Use these to test integrations with various python libraries.
+Various driver applications can be found in `./drivers`. Use these to test integrations with various Python libraries.
 
 #### Flask Driver
 A basic Flask server for integration testing can be started by running: `. ./bin/start-flask.py`
