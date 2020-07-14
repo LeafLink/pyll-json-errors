@@ -1,5 +1,5 @@
 """Generic JsonErrorArrays."""
-from pyll_json_errors.json_api.models import JsonError, JsonErrorsArray
+from pyll_json_errors.models import JsonError, JsonErrorArray
 
 
 def _generic_error(title, detail, status):
@@ -7,7 +7,7 @@ def _generic_error(title, detail, status):
 
 
 def _generic_error_array(errors=[]):
-    return JsonErrorsArray(errors)
+    return JsonErrorArray(errors)
 
 
 def error403(*, title="Forbidden", detail=None):

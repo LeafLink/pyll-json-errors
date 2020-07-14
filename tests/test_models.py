@@ -1,0 +1,75 @@
+"""pyll_json_errors.models"""
+import pytest
+
+from pyll_json_errors import models
+
+
+def test__JsonErrorSourceParameter__as_dict():
+    """JsonErrorSourceParameter as a dictionary."""
+    para = "param"
+    mod = models.JsonErrorSourceParameter(parameter=para)
+    assert mod.as_dict() == {"parameter": para}
+
+
+def test__JsonErrorSourcePointer__as_dict():
+    """JsonErrorSourcePointer as a dictionary."""
+    pointer = "/some/pointer"
+    mod = models.JsonErrorSourcePointer(pointer=pointer)
+    assert mod.as_dict() == {"pointer": pointer}
+
+
+def test__JsonError____init__(json_error_factory):
+    """Check passing incorrect typed objects to JsonError init."""
+    _ = json_error_factory()
+
+    with pytest.raises(TypeError):
+        models.JsonError(source=4)
+
+    with pytest.raises(TypeError):
+        models.JsonError(meta=4)
+
+
+def test__JsonError__as_dict(json_error_factory):
+    """Test getting JsonError as a dictionary."""
+    err = json_error_factory()
+    data = err.as_dict()
+    for key in ["id", "status", "code", "title", "detail", "source", "meta"]:
+        assert key in data
+
+
+def test__JsonErrorArray___unique_status_codes(json_error_array_factory):
+    """Test getting a list of unique status codes from the list of errors."""
+    array = json_error_array_factory()
+    assert array._unique_status_codes() == [400]
+
+    array.errors[0].status = 401
+    for status in [400, 401]:
+        assert status in array._unique_status_codes()
+
+
+def test__JsonErrorArray__status(json_error_array_factory):
+    """Status should be the highest code, rounded down the the nearest 100th."""
+    array = json_error_array_factory()
+    assert array.status == 400
+
+    array.errors[0].status = 522
+    assert array.status == 500
+
+
+def test__JsonErrorArray__as_dict(json_error_array_factory):
+    """Get JsonErrorArray as dictionary."""
+    array = json_error_array_factory()
+    assert "errors" in array.as_dict()
+
+
+def test__JsonErrorArray__as_json(json_error_array_factory):
+    """Test getting object as a json string."""
+    array = json_error_array_factory()
+    data = array.as_json()
+    assert isinstance(data, str)
+
+
+def test__JsonErrorArray____str__(json_error_array_factory):
+    """Test printing object as string."""
+    array = json_error_array_factory()
+    assert str(array) == "<JsonErrorArray>(400) Length: 2"

@@ -1,15 +1,14 @@
 """Helpers to created Flask responses."""
 from flask import Response
 
-from pyll_json_errors import constants
-from pyll_json_errors.json_api import generics
+from pyll_json_errors import constants, exceptions, generics
 
 
 def make_response(*, json_errors, mimetype=constants.HEADER_CONTENT_TYPE_VALUE):
-    """Create a Flask Response object from JsonErrorsArray.
+    """Create a Flask Response object from JsonErrorArray.
 
     Args:
-        json_errors (json_api.JsonErrorsArray): The errors to return in response.
+        json_errors (models.JsonErrorArray): The errors to return in response.
         mimetype (str): The mimetype the Response will return with. Defaults to constants.HEADER_CONTENT_TYPE_VALUE.
 
     Returns:
@@ -35,3 +34,7 @@ def wrap_app(app):
     @app.errorhandler(404)
     def not_found(error):
         return make_response(json_errors=generics.error404())
+
+    @app.errorhandler(exceptions.ConcreteJsonError)
+    def concrete_json_error(error):
+        return make_response(json_errors=error.json_errors)

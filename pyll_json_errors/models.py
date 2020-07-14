@@ -3,6 +3,7 @@
 https://jsonapi.org/format
 """
 import json
+import math
 from abc import ABC, abstractmethod
 
 
@@ -13,8 +14,7 @@ class BaseJson(ABC):
         Converts object into a dictionary.
 
         Returns:
-            dict: Dictionary representation of object. Must only contain
-                Python primitives.
+            dict: Dictionary representation of object. Must only contain Python primitives.
         """
 
     def serialized(self):
@@ -46,14 +46,14 @@ class JsonError(BaseJson):
         self.detail = detail
 
         if source is not None:
-            if not isinstance(source, [JsonErrorSourceParameter, JsonErrorSourcePointer]):
+            if not isinstance(source, (JsonErrorSourceParameter, JsonErrorSourcePointer)):
                 raise TypeError(
                     f"source must be either {JsonErrorSourceParameter.__name__} or {JsonErrorSourcePointer.__name__}."
                 )
         self.source = source
 
         if meta is not None:
-            if not isinstance(meta, [BaseJson, dict]):
+            if not isinstance(meta, (BaseJson, dict)):
                 raise TypeError(f"meta must be either {BaseJson.__name__} concrete class or dict.")
         self.meta = meta
 
@@ -79,7 +79,7 @@ class JsonError(BaseJson):
         return data
 
 
-class JsonErrorsArray(BaseJson):
+class JsonErrorArray(BaseJson):
     def __init__(self, errors=[]):
         self.errors = errors
 
@@ -94,6 +94,7 @@ class JsonErrorsArray(BaseJson):
 
     @property
     def status(self):
+        """Status is the highest status of all the errors, rounded down the the nearest 100th."""
         status = None
         uniques = self._unique_status_codes()
 
@@ -109,8 +110,8 @@ class JsonErrorsArray(BaseJson):
         return {"errors": [error.as_dict() for error in self.errors]}
 
     def as_json(self):
-        """Returns JsonErrorsArray as a JSON compliant string."""
+        """Returns JsonErrorArray as a JSON compliant string."""
         return json.dumps(self.as_dict())
 
     def __str__(self):
-        return f"<{self.__class__.__name}>({self.status}) Length: {len(self.errors)}"
+        return f"<{self.__class__.__name__}>({self.status}) Length: {len(self.errors)}"
