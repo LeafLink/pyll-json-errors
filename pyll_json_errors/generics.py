@@ -3,18 +3,16 @@ from pyll_json_errors.models import JsonError, JsonErrorArray
 
 
 def _generic_error(title, detail, status):
-    return JsonError(title=title, detail=detail, status=status)
+    return JsonErrorArray([JsonError(title=title, detail=detail, status=status)])
 
 
-def _generic_error_array(errors=[]):
-    return JsonErrorArray(errors)
+def error400(*, title="Bad Request", detail=None):
+    return _generic_error(title, detail, 400)
 
 
 def error403(*, title="Forbidden", detail=None):
-    error = _generic_error(title, detail, 403)
-    return _generic_error_array([error])
+    return _generic_error(title, detail, 403)
 
 
 def error404(*, title="Not found", detail=None):
-    error = _generic_error(title, detail, 404)
-    return _generic_error_array([error])
+    return _generic_error(title, detail, 404)

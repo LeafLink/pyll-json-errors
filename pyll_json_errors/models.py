@@ -80,8 +80,22 @@ class JsonError(BaseJson):
 
 
 class JsonErrorArray(BaseJson):
+    """Container class for a multiple JsonError objects.
+
+    Manages various attributes of the top level "errors" JSON API object.
+
+
+    Attributes:
+        errors (List[JsonError]): The list of JsonError objects.
+        fallback_status (int): The fallback HTTP status code to use for HTTP responses if one cannot be determined
+            from self.errors. Defaults to 400.
+        overrider_status (Optional[int]): If set, this value will always be returned as the status.
+    """
+
     def __init__(self, errors=[]):
         self.errors = errors
+        self.fallback_status = 400
+        self.override_status = None
 
     def _unique_status_codes(self):
         """Get the list of unique status codes among the errors."""
@@ -94,23 +108,40 @@ class JsonErrorArray(BaseJson):
 
     @property
     def status(self):
-        """Status is the highest status of all the errors, rounded down the the nearest 100th."""
-        status = None
+        """Get the HTTP status code that represents the collection of JsonErrors as a whole.
+
+        If self.override_status is set, that is returnd.
+        Else, we try to determine the status from self.errors. If there is only one error, return that errors status,
+        else return the highest status of all errors, rounded down to the nearest 100th.
+        If that does not result in a value, self.fallback_status is returned.
+        """
+        status = self.fallback_status
         uniques = self._unique_status_codes()
 
-        if len(uniques) == 1:
+        if self.override_status is not None:
+            status = self.override_status
+        elif len(uniques) == 1:
             status = uniques[0]
-        else:
+        elif len(uniques) > 1:
             ordered = sorted(uniques, reverse=True)
             status = self._round_down(ordered[0])
 
         return status
 
     def as_dict(self):
+        """Get JsonErrayArray as a JSON API compliant Python dictionary.
+
+        Returns:
+            dict
+        """
         return {"errors": [error.as_dict() for error in self.errors]}
 
     def as_json(self):
-        """Returns JsonErrorArray as a JSON compliant string."""
+        """Get JsonErrorArray as a JSON API compliant JSON string.
+
+        Returns:
+            str
+        """
         return json.dumps(self.as_dict())
 
     def __str__(self):

@@ -1,7 +1,10 @@
-"""Helpers to created Flask responses."""
+"""Flask integrations.
+
+https://flask.palletsprojects.com/en/1.1.x/
+"""
 from flask import Response
 
-from pyll_json_errors import constants, exceptions, generics
+from pyll_json_errors import constants, exceptions, generics, models, transform
 
 
 def make_response(*, json_errors, mimetype=constants.HEADER_CONTENT_TYPE_VALUE):
@@ -38,3 +41,12 @@ def wrap_app(app):
     @app.errorhandler(exceptions.ConcreteJsonError)
     def concrete_json_error(error):
         return make_response(json_errors=error.json_errors)
+
+
+class HttpExceptionTransform(transform.BaseTransform):
+    """Transform werkzeug HTTPExceptions to JsonErrors."""
+
+    def make_json_errors(self, sources):
+        return [
+            models.JsonError(status=source.code, title=source.name, detail=source.description) for source in sources
+        ]

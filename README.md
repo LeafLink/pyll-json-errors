@@ -88,4 +88,4 @@ poetry run python ./path/to/script.py
 Various driver applications can be found in `./drivers`. Use these to test integrations with various Python libraries.
 
 #### Flask Driver
-A basic Flask server for integration testing can be started by running: `. ./bin/start-flask.py`
+A basic Flask server for integration testing can be started by running: `. ./bin/flask-driver.py`
