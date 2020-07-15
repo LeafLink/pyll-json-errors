@@ -15,7 +15,12 @@ def test___generic_error_array():
 
 
 @pytest.mark.parametrize(
-    "func, status, title", [(generics.error403, 403, "Forbidden"), (generics.error404, 404, "Not found")]
+    "func, status, title",
+    [
+        (generics.error403, 403, "Forbidden"),
+        (generics.error404, 404, "Not found"),
+        (generics.error400, 400, "Bad Request"),
+    ],
 )
 def test__generic_errors(func, status, title):
     err = func()
