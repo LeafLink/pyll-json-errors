@@ -19,7 +19,8 @@ jobs:
           name: Quality Checks
           command: |
             ls ./../
-            pwd ../
+            ls ./
+            echo "\nhello"
 workflows:
   version: 2
   ci:
