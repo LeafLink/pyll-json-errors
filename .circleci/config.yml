@@ -19,7 +19,6 @@ jobs:
           name: Quality Checks
           command: |
             ls
-            make test
 
 workflows:
   version: 2
