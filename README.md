@@ -2,6 +2,10 @@
 
 Internal LeafLink Python library to implement JSON API errors in HTTP APIs.
 
+---
+
+[![CircleCI](https://circleci.com/gh/LeafLink/pyll-json-errors.svg?style=svg&circle-token=70111963b87fa2b476fece5740320b4dc464ad11)](https://circleci.com/gh/LeafLink/pyll-json-errors)
+
 > It's pronounced "pill".
 
 - [Development](#development)
