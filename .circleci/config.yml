@@ -19,9 +19,7 @@ jobs:
       - run:
           name: Quality Checks
           command: |
-            ls ./../
-            ls ./
-            echo "\nhello"
+            make test
 workflows:
   version: 2
   ci:
