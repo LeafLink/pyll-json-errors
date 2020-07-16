@@ -15,6 +15,7 @@ jobs:
   quality_checks:
     executor: python/default
     steps:
+      - checkout
       - run:
           name: Quality Checks
           command: |
