@@ -19,20 +19,10 @@ jobs:
           name: Quality Checks
           command: make test
 
-  build-and-test:
-    executor: python/default
-    steps:
-      - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
-      - run:
-          command: ./manage.py test
-          name: Test
-
 workflows:
-  main:
+  version: 2
+  ci:
     jobs:
       - quality-checks:
-          required:
+          requires:
             - install-poetry
