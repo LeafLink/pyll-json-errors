@@ -23,7 +23,7 @@ workflows:
   version: 2
   ci:
     jobs:
-      - install_poetry
+      - install
       - quality_checks:
           requires:
-            - install_poetry
+            - install
