@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Quality Checks
           command: |
-            ls
+            ls ./../
             pwd ../
 workflows:
   version: 2
