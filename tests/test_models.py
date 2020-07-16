@@ -47,13 +47,57 @@ def test__JsonErrorArray___unique_status_codes(json_error_array_factory):
         assert status in array._unique_status_codes()
 
 
-def test__JsonErrorArray__status(json_error_array_factory):
-    """Status should be the highest code, rounded down the the nearest 100th."""
+def test__JsonErrorArray__status__override(json_error_array_factory):
+    """Explicitly set array status."""
     array = json_error_array_factory()
+    array.override_status = 566
+    assert array.status == 566
+
+
+def test__JsonErrorArray__status__unique_len_1(json_error_array_factory):
+    """When either all error status are uniform, or only one error."""
+    array = json_error_array_factory()
+
+    array.errors[0].status = 400
+    array.errors[1].status = 400
     assert array.status == 400
 
-    array.errors[0].status = 522
+    del array.errors[1]
+    assert array.status == 400
+
+
+def test__JsonErrorArray__status__unique_len_gt_1(json_error_array_factory):
+    """More than one unique status code among errors"""
+    array = json_error_array_factory()
+
+    array.errors[0].status = 402
+    array.errors[1].status = 405
+    assert array.status == 400
+
+    array.errors[0].status = 402
+    array.errors[1].status = 566
     assert array.status == 500
+
+
+def test__JsonErrorArray__status__fallback(json_error_array_factory):
+    """Fallback status is used when none of the errors provide a status."""
+    array = json_error_array_factory()
+
+    array.errors[0].status = None
+    array.errors[1].status = None
+    assert array.status == 400
+
+    array.fallback_status = 566
+    assert array.status == 566
+
+
+def test__JsonErrorArray__status__mixed(json_error_array_factory):
+    """Some errors have status, other do not."""
+    array = json_error_array_factory()
+
+    array.errors[0].status = 566
+    array.errors[1].status = None
+    assert array.status == 566
 
 
 def test__JsonErrorArray__as_dict(json_error_array_factory):
@@ -62,10 +106,10 @@ def test__JsonErrorArray__as_dict(json_error_array_factory):
     assert "errors" in array.as_dict()
 
 
-def test__JsonErrorArray__as_json(json_error_array_factory):
+def test__JsonErrorArray__serialized(json_error_array_factory):
     """Test getting object as a json string."""
     array = json_error_array_factory()
-    data = array.as_json()
+    data = array.serialized()
     assert isinstance(data, str)
 
 

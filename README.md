@@ -4,9 +4,6 @@ Internal LeafLink Python library to implement JSON API errors in HTTP APIs.
 
 > It's pronounced "pill".
 
-- [JSON API Error Implementation](#json-api-error-implementation)
-  * [Remarks](#remarks)
-  * [Deviations](#deviations)
 - [Development](#development)
   * [Requirements](#requirements)
   * [Setup Development Environment](#setup-development-environment)
@@ -14,54 +11,6 @@ Internal LeafLink Python library to implement JSON API errors in HTTP APIs.
   * [Running Python](#running-python)
   * [Driver Applications](#driver-applications)
     * [Flask Driver](#flask-driver)
-
-## JSON API Error Implementation
-See [the JSON API error spec](https://jsonapi.org/format/#errors), and
-[examples](https://jsonapi.org/examples/#error-objects).
-
-### Remarks
-
-Error `title` properties should _always_ be the same for the same error type. Example:
-
-```javascript
-// No
-{
-    "errors": [
-        {
-            ...,
-            "title": "Product #123 not found."
-        },
-        {
-            ...,
-            "title": "Order #456 not found."
-        }
-    ]
-}
-
-// Yes
-{
-    "errors": [
-        {
-            ...,
-            "title": "Not found.",
-            "detail": "Product #123 could not be found."
-        },
-        {
-            ...,
-            "title": "Not found.",
-            "detail": "Order #456 could not be found."
-        }
-    ]
-}
-```
-
-### Deviations
-LeafLink API errors deviate from JSON API errors in two ways:
-
-1. LeafLink APIs do not wrap request bodies in the `data` top level key. Thus, error `source.pointer` properties will
-never begin with `/data/`, they will begin with `/`.
-2. Error responses will return a `Content-Type` of `application/json`, not `application/vnd.api+json`. This is because
-we do not strictly meet the JSON API error spec.
 
 
 ## Development
@@ -88,4 +37,7 @@ poetry run python ./path/to/script.py
 Various driver applications can be found in `./drivers`. Use these to test integrations with various Python libraries.
 
 #### Flask Driver
-A basic Flask server for integration testing can be started by running: `. ./bin/start-flask.py`
+A basic Flask server for integration testing can be started by running: `. ./bin/flask-driver.sh`
+
+#### Marshmallow Driver
+Basic Marshmallow schema and validation example. Can be ran via: `. ./bin/marshmallow-driver.sh`

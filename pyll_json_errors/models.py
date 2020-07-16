@@ -1,6 +1,6 @@
-"""Representations of various JSON API objects.
+"""Python representations of various JSON API errors objects.
 
-https://jsonapi.org/format
+[JSON API Error Format](https://jsonapi.org/format/#error-objects)
 """
 import json
 import math
@@ -8,20 +8,34 @@ from abc import ABC, abstractmethod
 
 
 class BaseJson(ABC):
+    """Abstract class which all concrete JSON API object classes should inherit."""
+
     @abstractmethod
     def as_dict(self):
         """
-        Converts object into a dictionary.
+        Converts the object into a dictionary containing only Python primitives.
+        Must be implemented by concrete subclasses.
 
         Returns:
-            dict: Dictionary representation of object. Must only contain Python primitives.
+            dict: Dictionary representation of objects containing only Python primitives.
         """
 
     def serialized(self):
+        """Get object as stringified JSON.
+
+        Returns:
+            str: The object as stringified JSON.
+        """
         return json.dumps(self.as_dict())
 
 
 class JsonErrorSourceParameter(BaseJson):
+    """Represents a parameter type JSON API error `source` object.
+
+    Args:
+        parameter (str): The name of the query parameter causing the issue.
+    """
+
     def __init__(self, *, parameter):
         self.parameter = parameter
 
@@ -30,6 +44,12 @@ class JsonErrorSourceParameter(BaseJson):
 
 
 class JsonErrorSourcePointer(BaseJson):
+    """Represents a pointer type JSON API error `source` object.
+
+    Args:
+       pointer (str): A JSON API compliant pointer string to the request body attribute causing the issue.
+    """
+
     def __init__(self, *, pointer):
         self.pointer = pointer
 
@@ -38,6 +58,23 @@ class JsonErrorSourcePointer(BaseJson):
 
 
 class JsonError(BaseJson):
+    """Represents a single JSON error object.
+
+    Attributes:
+        id (Optional[str]): A unique identifier for this particular occurrence of the problem.
+        status (Optional[str]): The HTTP status code applicable to this problem, expressed as a string value.
+        code (Optional[str]): An application-specific error code, expressed as a string value.
+        title (Optional[str]): A short, human-readable summary of the problem that SHOULD NOT change from occurrence
+            to occurrence of the problem.
+        detail (Optional[str]): A human-readable explanation specific to this occurrence of the problem.
+        source (Optional[Union[JsonErrorSourceParameter, JsonErrorSourcePointer]]): An object containing references
+            to the source of the error.
+        meta (Optional[Union[models.BaseJson, dict]]): Non-standard meta-information about the error.
+
+    Raises:
+        TypeError: Raised if `source` or `meta` are not the expected types.
+    """
+
     def __init__(self, *, id=None, status=None, code=None, title=None, detail=None, source=None, meta=None):
         self.id = id
         self.status = status
@@ -58,7 +95,13 @@ class JsonError(BaseJson):
         self.meta = meta
 
     def as_dict(self):
-        # basic params
+        """
+        Converts the object into a dictionary containing only Python primitives. Resulting dictionary will _only_
+        contain keys with values, there will not be any keys with a value of `None`.
+
+        Returns:
+            dict: Dictionary representation of objects containing only Python primitives.
+        """
         data = {
             key: str(getattr(self, key))
             for key in ["id", "status", "code", "title", "detail"]
@@ -80,8 +123,22 @@ class JsonError(BaseJson):
 
 
 class JsonErrorArray(BaseJson):
+    """Representation of multiple JsonError objects.
+
+    Manages various attributes of the top level "errors" JSON API object.
+
+
+    Attributes:
+        errors (List[JsonError]): The list of JsonError objects.
+        fallback_status (int): The fallback HTTP status code to use for HTTP responses if one cannot be derived from
+            provided errors. Defaults to 400.
+        override_status (Optional[int]): If set, this value will always be returned as the status.
+    """
+
     def __init__(self, errors=[]):
         self.errors = errors
+        self.fallback_status = 400
+        self.override_status = None
 
     def _unique_status_codes(self):
         """Get the list of unique status codes among the errors."""
@@ -94,13 +151,24 @@ class JsonErrorArray(BaseJson):
 
     @property
     def status(self):
-        """Status is the highest status of all the errors, rounded down the the nearest 100th."""
-        status = None
+        """Get the HTTP status code that represents the collection of JsonErrors as a whole.
+
+        If `override_status` is set, that is returned.
+        Else, try to derive the status from `errors`. If there is only one error, return that error's status,
+        else return the highest status of all errors, rounded down to the nearest 100th.
+        If that does not result in a value, `fallback_status` is returned.
+
+        Returns:
+            int: The HTTP status code.
+        """
+        status = self.fallback_status
         uniques = self._unique_status_codes()
 
-        if len(uniques) == 1:
+        if self.override_status is not None:
+            status = self.override_status
+        elif len(uniques) == 1:
             status = uniques[0]
-        else:
+        elif len(uniques) > 1:
             ordered = sorted(uniques, reverse=True)
             status = self._round_down(ordered[0])
 
@@ -108,10 +176,6 @@ class JsonErrorArray(BaseJson):
 
     def as_dict(self):
         return {"errors": [error.as_dict() for error in self.errors]}
-
-    def as_json(self):
-        """Returns JsonErrorArray as a JSON compliant string."""
-        return json.dumps(self.as_dict())
 
     def __str__(self):
         return f"<{self.__class__.__name__}>({self.status}) Length: {len(self.errors)}"

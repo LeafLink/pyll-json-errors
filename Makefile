@@ -1,6 +1,13 @@
 # Script constants
-.DEFAULT_GOAL := help
 
+.DEFAULT_GOAL := help
+LOCALHOST=0.0.0.0
+PDOCS_PORT=5001
+
+
+docs-server:
+	@echo "Running PDocs development server on port $(PDOCS_PORT)"
+	poetry run pdoc pyll_json_errors --html --output-dir docs --force --http $(LOCALHOST):$(PDOCS_PORT)
 
 format:
 	@echo "Linting and fixing code..."
@@ -25,6 +32,7 @@ help:
 	@echo "  LeafLink Mail Service Commands"
 	@echo "  |"
 	@echo "  |_ help (default)          - Show this message."
+	@echo "  |_ docs-server             - Start a PDocs development server."
 	@echo "  |_ format                  - Lint code and fix any errors."
 	@echo "  |_ lint                    - Lint code, does not fix any errors."
 	@echo "  |_ test                    - Run unit tests."
@@ -32,6 +40,7 @@ help:
 	@echo " "
 
 .PHONY:
+	docs-server
 	format
 	lint
 	test
