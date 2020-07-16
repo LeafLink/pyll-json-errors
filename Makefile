@@ -23,8 +23,13 @@ lint:
 
 test:
 	@echo "Testing code..."
-	poetry run pytest -c ./setup.cfg
+	poetry run pytest -c ./setup.cfg --cov-report term-missing
 
+test-ci:
+	@echo "Testing code..."
+	poetry run pytest -c ./setup.cfg \
+		--cov-report=xml:./test-results/coverage.xml \
+		--junitxml=./test-results/pytest/results.xml \
 
 
 # Help Docs
@@ -36,6 +41,7 @@ help:
 	@echo "  |_ format                  - Lint code and fix any errors."
 	@echo "  |_ lint                    - Lint code, does not fix any errors."
 	@echo "  |_ test                    - Run unit tests."
+	@echo "  |_ test-ci                 - Run unit tests and generate coverage reports."
 	@echo "  |____________________________________________________________________"
 	@echo " "
 
@@ -44,4 +50,4 @@ help:
 	format
 	lint
 	test
-
+	test-ci
