@@ -19,7 +19,7 @@ jobs:
           name: Quality Checks
           command: |
             ls
-
+            pwd
 workflows:
   version: 2
   ci:
