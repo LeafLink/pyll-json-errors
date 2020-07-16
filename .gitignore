@@ -3,3 +3,5 @@
 .pytest_cache/
 docs/**
 !docs/.gitkeep
+test-results/**
+.coverage
