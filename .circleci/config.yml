@@ -4,14 +4,13 @@ orbs:
   python: circleci/python@0.3.2
 
 jobs:
-  install_poetry:
+  install:
     executor: python/default
     steps:
+      - checkout
       - run:
-          name: Install Poetry
-          command: |
-            curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-            PATH="$PATH:~/.poetry/bin"
+          name: Install
+          command: poetry install
   quality_checks:
     executor: python/default
     steps:
