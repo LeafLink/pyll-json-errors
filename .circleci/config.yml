@@ -1,0 +1,38 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.3.2
+
+jobs:
+  install-poetry:
+    executor: python/default
+    steps:
+      - run:
+          name: Install Poetry
+          command: |
+            curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+            PATH="$PATH:~/.poetry/bin"
+  quality-checks:
+    executor: python/default
+    steps:
+      - run:
+          name: Quality Checks
+          command: make test
+
+  build-and-test:
+    executor: python/default
+    steps:
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          command: ./manage.py test
+          name: Test
+
+workflows:
+  main:
+    jobs:
+      - quality-checks:
+          required:
+            - install-poetry
