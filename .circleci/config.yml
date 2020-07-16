@@ -17,4 +17,4 @@ workflows:
   version: 2
   ci:
     jobs:
-      - quality_checks:
+      - quality_checks
