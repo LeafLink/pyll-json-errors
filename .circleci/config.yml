@@ -12,6 +12,7 @@ jobs:
           name: Quality Checks
           command: |
             poetry install
+            make lint
             make test
 workflows:
   version: 2
