@@ -4,13 +4,6 @@ orbs:
   python: circleci/python@0.3.2
 
 jobs:
-  install:
-    executor: python/default
-    steps:
-      - checkout
-      - run:
-          name: Install
-          command: poetry install
   quality_checks:
     executor: python/default
     steps:
@@ -18,12 +11,10 @@ jobs:
       - run:
           name: Quality Checks
           command: |
+            poetry install
             make test
 workflows:
   version: 2
   ci:
     jobs:
-      - install
       - quality_checks:
-          requires:
-            - install
