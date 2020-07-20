@@ -12,10 +12,10 @@ authors = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-Flask = "^1.1.2"
-marshmallow = "^3.7.0"
-djangorestframework = "^3.0.0"
-
+Flask = { version = "^1.1.2", optional = true }
+marshmallow = { version = "^3.7.0", optional = true }
+djangorestframework = { version = "^3.0.0", optional = true }
+werkzeug = { version = "^1.0.0", optional = true }
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.3"
@@ -27,6 +27,11 @@ pdoc3 = "^0.8.4"
 pytest-cov = "^2.10.0"
 pytest-django = "^3.9.0"
 
+[tool.poetry.extras]
+all = ["djangorestframework", "Flask", "marshmallow", "werkzeug"]
+flask = ["Flask", "werkzeug"]
+marshmallow = ["marshmallow"]
+rest_workframe = ["djangorestframework", "werkzeug"]
 
 [build-system]
 requires = ["poetry>=1.0.5"]

@@ -2,7 +2,9 @@
 from flask import Flask, abort, url_for
 from werkzeug import exceptions as w_exceptions
 
-from pyll_json_errors import exceptions, flask, JsonError, JsonErrorArray
+from pyll_json_errors import exceptions
+from pyll_json_errors.contrib import flask
+from pyll_json_errors.models import JsonError, JsonErrorArray
 
 app = Flask(__name__)
 flask.wrap_app(app)

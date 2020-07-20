@@ -5,6 +5,10 @@
 See the [driver Flask app](https://github.com/LeafLink/pyll-json-errors/tree/master/drivers/flask_drive.py)
 for examples on integrating `pyll_json_errors` into Flask.
 """
+from pyll_json_errors import _check_dependency
+
+_check_dependency("flask", __name__)
+
 from flask import Response
 
 from pyll_json_errors import constants, exceptions, generics, models, transform

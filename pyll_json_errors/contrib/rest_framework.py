@@ -1,5 +1,10 @@
 """Provide django-rest-framework integration"""
 
+from pyll_json_errors import _check_dependency
+
+_check_dependency("django", __name__)
+_check_dependency("rest_framework", __name__)
+_check_dependency("werkzeug", __name__)
 
 from django.http.response import Http404
 from rest_framework import exceptions

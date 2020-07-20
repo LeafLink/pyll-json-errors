@@ -1,9 +1,10 @@
 """pyll_json_errors.contrib.flask"""
 import pytest
-from flask import Response
+from flask import Flask, Response
 from werkzeug import exceptions
 
 from pyll_json_errors.contrib import flask
+from pyll_json_errors.exceptions import ConcreteJsonError
 
 
 def test__make_response(json_error_array_factory):
@@ -35,3 +36,24 @@ def test__HttpExceptionTransform__make_json_errors(exc_classes):
         assert json_error.status == exc.code
         assert json_error.title == exc.name
         assert json_error.detail == exc.description
+
+
+def test__wrap_app():
+    """Test wrapping.
+
+    See: https://flask.palletsprojects.com/en/1.1.x/api/#flask.Flask.error_handler_spec
+    """
+    app = Flask(__name__)
+    flask.wrap_app(app)
+
+    assert 403 in app.error_handler_spec[None]
+    assert 404 in app.error_handler_spec[None]
+    assert ConcreteJsonError in app.error_handler_spec[None][None]
+
+
+@pytest.mark.parametrize("status", [403, 404])
+def test__wrap_403(flask_client_factory, status):
+    client = flask_client_factory(__name__)
+    resp = client.get(f"/{status}")
+
+    assert resp.status_code == status
