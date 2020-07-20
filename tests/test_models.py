@@ -13,9 +13,10 @@ def test__JsonErrorSourceParameter__as_dict():
 
 def test__JsonErrorSourcePointer__as_dict():
     """JsonErrorSourcePointer as a dictionary."""
-    pointer = "/some/pointer"
-    mod = models.JsonErrorSourcePointer(pointer=pointer)
-    assert mod.as_dict() == {"pointer": pointer}
+    inp = ("some", "pointer")
+    outp = "/some/pointer"
+    mod = models.JsonErrorSourcePointer(keys=inp)
+    assert mod.as_dict() == {"pointer": outp}
 
 
 def test__JsonError____init__(json_error_factory):

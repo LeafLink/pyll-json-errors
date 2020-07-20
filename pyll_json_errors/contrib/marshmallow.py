@@ -34,8 +34,8 @@ class ValidationErrorTransform(transform.BaseTransform):
             errors.extend(source_errors)
 
         # Assemble list of JSON errors.
-        for (field, error) in errors:
-            source = models.JsonErrorSourcePointer(pointer=field)
+        for (keys, error) in errors:
+            source = models.JsonErrorSourcePointer(keys=keys)
             # If multiple errors are associated with one field, create a separate error object for each.
             if isinstance(error, (list, tuple, set)):
                 for err in error:

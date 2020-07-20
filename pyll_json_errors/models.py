@@ -6,6 +6,8 @@ import json
 import math
 from abc import ABC, abstractmethod
 
+from pyll_json_errors import constants
+
 
 class BaseJson(ABC):
     """Abstract class which all concrete JSON API object classes should inherit."""
@@ -46,12 +48,39 @@ class JsonErrorSourceParameter(BaseJson):
 class JsonErrorSourcePointer(BaseJson):
     """Represents a pointer type JSON API error `source` object.
 
+    Notes: See documentation for `utils.flatten_dict` for more information and example keys.
+
     Args:
-       pointer (str): A JSON API compliant pointer string to the request body attribute causing the issue.
+       keys (Tuple[str]): An tuple of strings which represents the path of the error in some object.
+
+    Example:
+        ```python
+        {
+            "one": {
+                "two": ["some error"]
+            }
+        }
+
+        # "some error"'s keys would be ("one", "two", "0")
+        ```
     """
 
-    def __init__(self, *, pointer):
-        self.pointer = pointer
+    def __init__(self, *, keys):
+        self.keys = keys
+
+    @property
+    def pointer(self):
+        """Get the final JSON pointer representation of the keys.
+
+        Returns:
+            str: The final stringified pointer.
+
+        Example:
+            ```python
+                JsonErrorSourcePointer(keys=("one", "two", "three")).pointer  # "/one/two/three"
+            ```
+        """
+        return constants.JSON_POINTER_SEPARATOR + constants.JSON_POINTER_SEPARATOR.join(self.keys)
 
     def as_dict(self):
         return {"pointer": self.pointer}
