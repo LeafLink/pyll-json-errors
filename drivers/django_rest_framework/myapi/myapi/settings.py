@@ -70,7 +70,7 @@ WSGI_APPLICATION = "myapi.wsgi.application"
 
 
 REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "pyll_json_errors.contrib.django_rest.reformat_response",
+    "EXCEPTION_HANDLER": "pyll_json_errors.contrib.rest_framework.reformat_response",
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
 }
 

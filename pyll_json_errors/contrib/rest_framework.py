@@ -18,21 +18,95 @@ class DRFTransform(transform.BaseTransform):
     """
 
     def get_title(self, status_code, pointer, error):
+        """Get the title of the error to be returned to the user.
+
+        Arguments:
+            status_code (int): The status code of the error.
+            pointer (List[str]): A list of pointer segments to the field which raised
+                the initial errors.
+            error (rest_framework.exceptions.ErrorDetail): The DRF-provided detail string
+                of the error.
+
+        Returns:
+            str: The title of the message.
+        """
         return HTTP_STATUS_CODES.get(status_code, None)
 
     def get_status_code(self, status_code, pointer, error):
+        """Get the status code of the error message.
+
+        Arguments:
+            status_code (int): The status code of the error.
+            pointer (List[str]): A list of pointer segments to the field which raised
+                the initial errors.
+            error (rest_framework.exceptions.ErrorDetail): The DRF-provided detail string
+                of the error.
+
+        Returns:
+            int: The status code to be associated with this error detail.
+        """
         return status_code
 
     def get_detail(self, status_code, pointer, error):
+        """Get the error detail.
+
+        Arguments:
+            status_code (int): The status code of the error.
+            pointer (List[str]): A list of pointer segments to the field which raised
+                the initial errors.
+            error (rest_framework.exceptions.ErrorDetail): The DRF-provided detail string
+                of the error.
+
+        Returns:
+            str: The detail message associated with this error.
+        """
         return str(error)
 
     def get_code(self, status_code, pointer, error):
+        """Get the code associated with this error detail.
+
+        Arguments:
+            status_code (int): The status code of the error.
+            pointer (List[str]): A list of pointer segments to the field which raised
+                the initial errors.
+            error (rest_framework.exceptions.ErrorDetail): The DRF-provided detail string
+                of the error.
+
+        Returns:
+            str: The code associated with this error detail.
+        """
         return str(error.code)
 
     def get_source(self, status_code, pointer, error):
+        """Get the pointer to the field which raised this error.
+
+        Arguments:
+            status_code (int): The status code of the error.
+            pointer (List[str]): A list of pointer segments to the field which raised
+                the initial errors.
+            error (rest_framework.exceptions.ErrorDetail): The DRF-provided detail string
+                of the error.
+
+        Returns:
+            pyll_json_errors.models.JsonErrorSourcePointer: An object which contains the
+                pointer to the field responsible for the error.
+        """
         return models.JsonErrorSourcePointer(keys=pointer)
 
     def make_error_dict(self, status_code, pointer, error):
+        """Get the entire error detail in a JSON API compatible object.
+
+        Arguments:
+            status_code (int): The status code of the error.
+            pointer (List[str]): A list of pointer segments to the field which raised
+                the initial errors.
+            error (rest_framework.exceptions.ErrorDetail): The DRF-provided detail string
+                of the error.
+
+        Returns:
+            pyll_json_errors.models.JsonError: An object which houses the entire error
+                detail, which can be formatted into JSON API spec.
+        """
         props = {
             "title": self.get_title(status_code, pointer, error),
             "status": self.get_status_code(status_code, pointer, error),

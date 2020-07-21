@@ -6,5 +6,5 @@ Internal Python library to implement LeafLink flavored JSON API errors in HTTP A
 __version__ = "0.1.0"
 
 
-from .contrib import django_rest, flask, marshmallow
+from .contrib import flask, marshmallow, rest_framework
 from .models import JsonError, JsonErrorArray, JsonErrorSourceParameter, JsonErrorSourcePointer
