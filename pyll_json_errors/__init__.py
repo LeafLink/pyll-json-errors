@@ -4,12 +4,6 @@ Internal Python library to implement LeafLink flavored JSON API errors in HTTP A
 .. include:: ./documentation.md
 """
 import importlib.util
-import logging
-
-logger = logging.getLogger(__name__)
-_handler = logging.StreamHandler()
-_handler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
-logger.addHandler(_handler)
 
 
 def _check_dependency(importee, importer):
