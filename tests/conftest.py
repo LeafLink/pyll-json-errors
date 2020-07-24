@@ -1,8 +1,9 @@
 """Pytest config."""
+import pytest
+
+from flask import Flask, abort
 
 from pyll_json_errors import models
-
-import pytest
 
 
 @pytest.fixture
@@ -16,7 +17,7 @@ def json_error_factory():
             title="some-title",
             detail="some-detail",
             source=source,
-            meta={"some": "meta"},
+            meta=models.JsonError(title="nested-error"),
         )
 
     return _factory
@@ -26,5 +27,20 @@ def json_error_factory():
 def json_error_array_factory(json_error_factory):
     def _factory():
         return models.JsonErrorArray([json_error_factory(), json_error_factory()])
+
+    return _factory
+
+
+@pytest.fixture
+def flask_client_factory():
+    def _factory(name):
+        app = Flask(name)
+        app.config["TESTING"] = True
+
+        @app.route("/<int:status>")
+        def status(status):
+            abort(status)
+
+        return app.test_client()
 
     return _factory

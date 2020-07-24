@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Quality Checks
           command: |
-            poetry install
+            poetry install -E all
             make lint
             make test-ci
       - codecov/upload:

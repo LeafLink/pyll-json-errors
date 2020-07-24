@@ -3,7 +3,7 @@ import json
 
 from marshmallow import Schema, ValidationError, fields, validate, validates, validates_schema
 
-from pyll_json_errors import marshmallow
+from pyll_json_errors.contrib import marshmallow
 
 
 # Various example Marshmallow Schema classes.

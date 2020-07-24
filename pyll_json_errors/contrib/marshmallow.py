@@ -5,6 +5,9 @@
 See the [driver Marshmallow app](https://github.com/LeafLink/pyll-json-errors/tree/master/drivers/marshmallow_drive.py)
 for examples on integrating `pyll_json_errors` with Marshmallow.
 """
+from pyll_json_errors import _check_dependency
+
+_check_dependency("marshmallow", __name__)
 
 from pyll_json_errors import models, transform, utils
 
