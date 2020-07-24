@@ -7,7 +7,8 @@ version = "0.1.0"
 description = "Convert various objects and exceptions to JSON API errors."
 authors = [
     "LeafLink Engineering <engineerin@leaflink.com>",
-    "Aaron Markey <aaron.markey@leaflink.com>"
+    "Aaron Markey <aaron.markey@leaflink.com>",
+    "Shonte Amato-Grill <shonte.amato-grill@leaflink.com>",
 ]
 
 [tool.poetry.dependencies]

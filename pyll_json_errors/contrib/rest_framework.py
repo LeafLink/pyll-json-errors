@@ -1,4 +1,10 @@
-"""Provide django-rest-framework integration"""
+"""Integrate JSON API errors with Django REST Framwork.
+
+[Django REST Framework](https://www.django-rest-framework.org/)
+
+See the [driver DRF app](https://github.com/LeafLink/pyll-json-errors/tree/master/drivers/django_rest_framework)
+for examples on integrating `pyll_json_errors` with DRF.
+"""
 
 from pyll_json_errors import _check_dependency
 
@@ -12,7 +18,7 @@ from rest_framework.response import Response
 from rest_framework.views import exception_handler
 from werkzeug.http import HTTP_STATUS_CODES
 
-from pyll_json_errors import constants, models, transform, utils
+from pyll_json_errors import constants, models, transform
 
 
 class DRFTransform(transform.BaseTransform):
@@ -25,7 +31,7 @@ class DRFTransform(transform.BaseTransform):
     def get_title(self, status_code, pointer, error):
         """Get the title of the error to be returned to the user.
 
-        Arguments:
+        Args:
             status_code (int): The status code of the error.
             pointer (List[str]): A list of pointer segments to the field which raised
                 the initial errors.
@@ -40,7 +46,7 @@ class DRFTransform(transform.BaseTransform):
     def get_status_code(self, status_code, pointer, error):
         """Get the status code of the error message.
 
-        Arguments:
+        Args:
             status_code (int): The status code of the error.
             pointer (List[str]): A list of pointer segments to the field which raised
                 the initial errors.
@@ -55,7 +61,7 @@ class DRFTransform(transform.BaseTransform):
     def get_detail(self, status_code, pointer, error):
         """Get the error detail.
 
-        Arguments:
+        Args:
             status_code (int): The status code of the error.
             pointer (List[str]): A list of pointer segments to the field which raised
                 the initial errors.
@@ -70,7 +76,7 @@ class DRFTransform(transform.BaseTransform):
     def get_code(self, status_code, pointer, error):
         """Get the code associated with this error detail.
 
-        Arguments:
+        Args:
             status_code (int): The status code of the error.
             pointer (List[str]): A list of pointer segments to the field which raised
                 the initial errors.
@@ -85,7 +91,7 @@ class DRFTransform(transform.BaseTransform):
     def get_source(self, status_code, pointer, error):
         """Get the pointer to the field which raised this error.
 
-        Arguments:
+        Args:
             status_code (int): The status code of the error.
             pointer (List[str]): A list of pointer segments to the field which raised
                 the initial errors.
@@ -101,7 +107,7 @@ class DRFTransform(transform.BaseTransform):
     def make_error_dict(self, status_code, pointer, error):
         """Get the entire error detail in a JSON API compatible object.
 
-        Arguments:
+        Args:
             status_code (int): The status code of the error.
             pointer (List[str]): A list of pointer segments to the field which raised
                 the initial errors.
@@ -127,7 +133,7 @@ class DRFTransform(transform.BaseTransform):
     def _compose_error(self, err_source, err_details, status_code):
         """Compose an individual, potentially nested error message.
 
-        Arguments:
+        Args:
             err_source (Union[str, list]): The base pointer to where the exception was
                 generated. An empty list is interpreted to mean a sourceless error.
             err_details (Union[list, dict, rest_framework.exceptions.ErrorDetail]):
@@ -176,9 +182,8 @@ class DRFTransform(transform.BaseTransform):
     def make_json_errors(self, sources):
         """Transform django rest framework errors into models.JsonError objects.
 
-        Arguments:
-            sources (List[rest_framework.exceptions.APIException]):
-                The exception raised by DRF.
+        Args:
+            sources (List[rest_framework.exceptions.APIException]): The exception raised by DRF.
         Returns:
             List[models.JsonError]: A list of JsonError objects representing errors raised
                 by DRF.
@@ -199,9 +204,8 @@ class DRFTransform(transform.BaseTransform):
 def make_response(error_array):
     """Format a list of errors into a DRF response object.
 
-    Arguments:
-        error_array (pyll_json_errors.models.JsonErrorArray):
-            The list of errors to be formatted into the response.
+    Args:
+        error_array (pyll_json_errors.models.JsonErrorArray): The list of errors to be formatted into the response.
 
     Returns:
         rest_framework.response.Response: A response containing the formatted errors
@@ -218,7 +222,7 @@ def reformat_response(exc, context):
     for more information. This method can also be called directly as a custom exception
     handler.
 
-    Arguments:
+    Args:
         exc (rest_framework.exceptions.APIException): The exception that caused this
             errors response to be returned.
         context (dict): A dictonary of additional details passed from the rest framework.

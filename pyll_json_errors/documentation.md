@@ -5,6 +5,17 @@ See [the JSON API error spec](https://jsonapi.org/format/#errors), and
 ### Installation
 TBA
 
+#### Optional Dependencies
+See [Poetry's](https://python-poetry.org/docs/pyproject/#extras) documentation on installing optional dependencies.
+
+* Django REST Framework dependencies can be installed by using the `rest_framework` extras flag.
+* Flask dependencies can be installed by using the `flask` extras flag.
+* Marshmallow dependencies can be installed by using the `marshmallow` extras flag.
+* All dependencies can be installed by using the `all` extras flag.
+
+If you're integrating into an existing project which already has the dependencies you need, just install the base
+`pyll_json_error` package.
+
 ### Deviations
 LeafLink API errors deviate from JSON API errors in two ways:
 

@@ -24,9 +24,10 @@ Internal LeafLink Python library to implement JSON API errors in HTTP APIs.
 * [Poetry](https://python-poetry.org/)
 
 ### Setup Development Environment
-`poetry install`
+`poetry install -E all`
 
 ### Helpful Commands
+* `make docs-serve`: Spin up a local server to view documentation, port 5001.
 * `make format`: Fixes linting issues automatically.
 * `make lint`: Lints code and outputs to console.
 * `make test`: Runs unit tests.
@@ -41,8 +42,11 @@ poetry run python ./path/to/script.py
 ### Driver Applications
 Various driver applications can be found in `./drivers`. Use these to test integrations with various Python libraries.
 
+#### Django REST Framework
+A basic DRF application for integration testing can be started by running: `. ./bin/drf-driver.sh`
+
 #### Flask Driver
-A basic Flask server for integration testing can be started by running: `. ./bin/flask-driver.sh`
+A basic Flask application for integration testing can be started by running: `. ./bin/flask-driver.sh`
 
 #### Marshmallow Driver
 Basic Marshmallow schema and validation example. Can be ran via: `. ./bin/marshmallow-driver.sh`
