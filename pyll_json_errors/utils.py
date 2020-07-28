@@ -10,7 +10,7 @@ def flatten_dict(*, data):
     Args:
         data (dict): A dictionary to flatten.
 
-    Returns:  #TODO
+    Returns:
         Tuple[Tuple[Tuple[str], Any]]: A tuple of tuples containing the flatten key path and the value.
 
     Examples:
