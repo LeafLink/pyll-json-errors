@@ -169,9 +169,7 @@ class DRFTransform(transform.BaseTransform):
 
         if not isinstance(err_source, list) and err_source:
             # ensure source is a list
-            err_source = [
-                err_source,
-            ]
+            err_source = [err_source,]
         elif not isinstance(err_source, list) and not err_source:
             # err_source is None
             err_source = []
@@ -193,7 +191,7 @@ class DRFTransform(transform.BaseTransform):
         for source in sources:
             if isinstance(source.detail, dict):
                 for err_source, err_details in source.detail.items():
-                    errors += self._compose_error(err_source, err_details, source.status_code)
+                    errors += self._compose_error(str(err_source), err_details, source.status_code)
             else:
                 # catch validation errors with flat details, no source
                 errors += self._compose_error(None, source.detail, source.status_code)
