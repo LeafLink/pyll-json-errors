@@ -4,7 +4,8 @@
 def flatten_dict(*, data):
     """Flatten a nested dictionary into a one-level dictionary.
 
-    Useful for generating JSON pointers from dictionaries.
+    Useful for generating JSON pointers from dictionaries. Output contains flattened keys and flattens any iterateable
+    values.
 
     Args:
         data (dict): A dictionary to flatten.
@@ -15,41 +16,45 @@ def flatten_dict(*, data):
     Examples:
     ```python
     inp = {
-        "hello": "world",
-        "foo": ["baz", "bar"],
-        0: {
-            1: 11,
-            2: {
-                "python": "django",
-                "ruby": "rails",
-                "java": ["spring", "faces"],
-                "javascript": {
-                    "frameworks": ["vue", "react"]
-                }
+        "simpleError": "red",
+        "simpleErrorList": ["orange", 1],
+        "objectError": {
+            "a": "yellow",
+            "b": 2,
+            "c": ["green", 3]
+        },
+        1: "blue",
+        2: ["purple", 4],
+        "listedObjects": [
+            {
+                "1": "lime",
+                2: ["maroon", 5]
+            },
+            {
+                3: "pink",
+                "d": ["jade", 6]
             }
-        }
+        ]
     }
-
-    outp = flatten_dict(data=inp)
     # outp
-    # {
-    #     ("hello",): "world",
-    #     ("foo",): [
-    #         "baz",
-    #         "bar"
-    #     ],
-    #     ("0", "1"): 11,
-    #     ("0", "2", "python"): "django",
-    #     ("0", "2", "ruby"): "rails",
-    #     ("0", "2", "java"): [
-    #         "spring",
-    #         "faces"
-    #     ],
-    #     ("0", "2", "javascript", "frameworks"): [
-    #         "vue",
-    #         "react"
-    #     ]
-    # }
+    # outp = (
+    #     ("/simpleError", "red"),
+    #     ("/simpleErrorList/0", "orange"),
+    #     ("/simpleErrorList/1", "1"),
+    #     ("/objectError/a", "yellow"),
+    #     ("/objectError/b", "2"),
+    #     ("/objectError/c/0", "green"),
+    #     ("/objectError/c/1", "3"),
+    #     ("/1", "blue"),
+    #     ("/2/0", "purple"),
+    #     ("/2/1", "4"),
+    #     ("/listedObjects/0/1", "lime"),
+    #     ("/listedObjects/0/2/0", "maroon"),
+    #     ("/listedObjects/0/2/1", "5"),
+    #     ("/listedObjects/1/3", "pink"),
+    #     ("/listedObjects/1/d/0", "jade"),
+    #     ("/listedObjects/1/d/1", "6"),
+    # )
     ```
     """
 
@@ -57,6 +62,9 @@ def flatten_dict(*, data):
         if isinstance(data2, dict):
             for key in data2:
                 yield from _flatten(data2[key], flat_key + [str(key)])
+        elif isinstance(data2, (set, list, tuple)):
+            for index, member in enumerate(data2):
+                yield from _flatten(member, flat_key + [str(index)])
         else:
             yield flat_key, data2
 

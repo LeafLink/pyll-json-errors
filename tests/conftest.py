@@ -44,3 +44,35 @@ def flask_client_factory():
         return app.test_client()
 
     return _factory
+
+
+@pytest.fixture
+def complex_error_sample():
+    inp = {
+        "simpleError": "red",
+        "simpleErrorList": ["orange", 1],
+        "objectError": {"a": "yellow", "b": 2, "c": ["green", 3]},
+        1: "blue",
+        2: ["purple", 4],
+        "listedObjects": [{"1": "lime", 2: ["maroon", 5]}, {3: "pink", "d": ["jade", 6]}],
+    }
+    outp = (
+        ("/simpleError", "red"),
+        ("/simpleErrorList/0", "orange"),
+        ("/simpleErrorList/1", "1"),
+        ("/objectError/a", "yellow"),
+        ("/objectError/b", "2"),
+        ("/objectError/c/0", "green"),
+        ("/objectError/c/1", "3"),
+        ("/1", "blue"),
+        ("/2/0", "purple"),
+        ("/2/1", "4"),
+        ("/listedObjects/0/1", "lime"),
+        ("/listedObjects/0/2/0", "maroon"),
+        ("/listedObjects/0/2/1", "5"),
+        ("/listedObjects/1/3", "pink"),
+        ("/listedObjects/1/d/0", "jade"),
+        ("/listedObjects/1/d/1", "6"),
+    )
+
+    return inp, outp
