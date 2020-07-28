@@ -38,23 +38,23 @@ def flatten_dict(*, data):
     }
     outp = flatten_dict(data=inp)
     # outp
-    # outp = (
+    # (
     #     (("simpleError",), "red"),
     #     (("simpleErrorList",), "orange"),
-    #     (("simpleErrorList",), "1"),
+    #     (("simpleErrorList",), 1),
     #     (("objectError", "a"), "yellow"),
-    #     (("objectError", "b"), "2"),
+    #     (("objectError", "b"), 2),
     #     (("objectError", "c"), "green"),
-    #     (("objectError", "c"), "3"),
+    #     (("objectError", "c"), 3),
     #     (("1",), "blue"),
     #     (("2",), "purple"),
     #     (("2",), "4"),
     #     (("listedObjects", "0", "1"), "lime"),
     #     (("listedObjects", "0", "2"), "maroon"),
-    #     (("listedObjects", "0", "2"), "5"),
+    #     (("listedObjects", "0", "2"), 5),
     #     (("listedObjects", "1", "3"), "pink"),
     #     (("listedObjects", "1", "d"), "jade"),
-    #     (("listedObjects", "1", "d"), "6"),
+    #     (("listedObjects", "1", "d"), 6),
     # )
     ```
     """
