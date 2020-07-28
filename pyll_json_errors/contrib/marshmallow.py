@@ -33,18 +33,12 @@ class ValidationErrorTransform(transform.BaseTransform):
 
         # Iterate thru sources and flatten all errors, collect in `errors`.
         for source in sources:
-            source_errors = [(key, value) for key, value in utils.flatten_dict(data=source.messages).items()]
+            source_errors = [(key, value) for key, value in utils.flatten_dict(data=source.messages)]
             errors.extend(source_errors)
 
         # Assemble list of JSON errors.
         for (keys, error) in errors:
             source = models.JsonErrorSourcePointer(keys=keys)
-            # If multiple errors are associated with one field, create a separate error object for each.
-            if isinstance(error, (list, tuple, set)):
-                for err in error:
-                    json_errors.append(models.JsonError(status=self.validation_error_status, detail=err, source=source))
-            # Else is one-to-one.
-            else:
-                json_errors.append(models.JsonError(status=self.validation_error_status, detail=error, source=source))
+            json_errors.append(models.JsonError(status=self.validation_error_status, detail=error, source=source))
 
         return json_errors
