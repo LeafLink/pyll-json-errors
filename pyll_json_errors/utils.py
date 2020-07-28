@@ -36,6 +36,7 @@ def flatten_dict(*, data):
             }
         ]
     }
+    outp = flatten_dict(data=inp)
     # outp
     # outp = (
     #     ("/simpleError", "red"),
