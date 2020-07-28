@@ -33,7 +33,7 @@ class ValidationErrorTransform(transform.BaseTransform):
 
         # Iterate thru sources and flatten all errors, collect in `errors`.
         for source in sources:
-            source_errors = [(key, value) for key, value in utils.flatten_dict(data=source.messages).items()]
+            source_errors = [(key, value) for key, value in utils.flatten_dict(data=source.messages)]
             errors.extend(source_errors)
 
         # Assemble list of JSON errors.

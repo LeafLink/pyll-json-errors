@@ -58,21 +58,21 @@ def complex_error_sample():
     }
     outp = (
         ("/simpleError", "red"),
-        ("/simpleErrorList/0", "orange"),
-        ("/simpleErrorList/1", "1"),
+        ("/simpleErrorList", "orange"),
+        ("/simpleErrorList", "1"),
         ("/objectError/a", "yellow"),
         ("/objectError/b", "2"),
-        ("/objectError/c/0", "green"),
-        ("/objectError/c/1", "3"),
+        ("/objectError/c", "green"),
+        ("/objectError/c", "3"),
         ("/1", "blue"),
-        ("/2/0", "purple"),
-        ("/2/1", "4"),
+        ("/2", "purple"),
+        ("/2", "4"),
         ("/listedObjects/0/1", "lime"),
-        ("/listedObjects/0/2/0", "maroon"),
-        ("/listedObjects/0/2/1", "5"),
+        ("/listedObjects/0/2", "maroon"),
+        ("/listedObjects/0/2", "5"),
         ("/listedObjects/1/3", "pink"),
-        ("/listedObjects/1/d/0", "jade"),
-        ("/listedObjects/1/d/1", "6"),
+        ("/listedObjects/1/d", "jade"),
+        ("/listedObjects/1/d", "6"),
     )
 
     return inp, outp

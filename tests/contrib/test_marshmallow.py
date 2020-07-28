@@ -28,9 +28,9 @@ def test__ValidationErrorTransform__make_json_errors__multiple_same_field():
 
     assert len(json_errors) == 2
 
-    for index, json_error in enumerate(json_errors):
+    for json_error in json_errors:
         assert json_error.status == 400
-        assert json_error.source.pointer == f"/one/two/{index}"
+        assert json_error.source.pointer == "/one/two"
     assert json_errors[0].detail == "error1"
     assert json_errors[1].detail == "error2"
 
