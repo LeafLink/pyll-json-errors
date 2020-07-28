@@ -169,7 +169,9 @@ class DRFTransform(transform.BaseTransform):
 
         if not isinstance(err_source, list) and err_source:
             # ensure source is a list
-            err_source = [err_source,]
+            err_source = [
+                err_source,
+            ]
         elif not isinstance(err_source, list) and not err_source:
             # err_source is None
             err_source = []

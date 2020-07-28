@@ -39,12 +39,6 @@ class ValidationErrorTransform(transform.BaseTransform):
         # Assemble list of JSON errors.
         for (keys, error) in errors:
             source = models.JsonErrorSourcePointer(keys=keys)
-            # If multiple errors are associated with one field, create a separate error object for each.
-            if isinstance(error, (list, tuple, set)):
-                for err in error:
-                    json_errors.append(models.JsonError(status=self.validation_error_status, detail=err, source=source))
-            # Else is one-to-one.
-            else:
-                json_errors.append(models.JsonError(status=self.validation_error_status, detail=error, source=source))
+            json_errors.append(models.JsonError(status=self.validation_error_status, detail=error, source=source))
 
         return json_errors
