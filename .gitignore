@@ -1,9 +1,22 @@
+# python
 *.pyc
 *egg-info/
 .pytest_cache/
-docs/**
-!docs/.gitkeep
+
+# testing
 test-results/**
 .coverage
-env/**
+
+# dist
+dist/
+
+# documentation
+docs/**
+!docs/.gitkeep
+
+# libraries
 *.sqlite3
+env/**
+
+# macOS
+.DS_Store

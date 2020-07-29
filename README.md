@@ -1,6 +1,6 @@
 # pyll-json-errors
 
-Internal LeafLink Python library to implement JSON API errors in HTTP APIs.
+LeafLink Python library to implement JSON API errors in HTTP APIs.
 
 ---
 
@@ -21,6 +21,7 @@ Internal LeafLink Python library to implement JSON API errors in HTTP APIs.
 ## Development
 
 ### Requirements
+* Python 3.6 or higher
 * [Poetry](https://python-poetry.org/)
 
 ### Setup Development Environment
