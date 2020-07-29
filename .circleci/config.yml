@@ -12,6 +12,7 @@ jobs:
       - run:
           name: Quality Checks
           command: |
+            pyenv install 3.6.9
             poetry install -E all
             make lint
             make test-ci
