@@ -2,7 +2,7 @@
 
 [Marshmallow docs](https://marshmallow.readthedocs.io/en/stable/)
 
-See the [driver Marshmallow app](https://github.com/LeafLink/pyll-json-errors/tree/master/drivers/marshmallow_drive.py)
+See the [driver Marshmallow app](https://github.com/LeafLink/pyll-json-errors/blob/master/drivers/marshmallow_driver.py)
 for examples on integrating `pyll_json_errors` with Marshmallow.
 """
 from pyll_json_errors import _check_dependency
@@ -25,8 +25,8 @@ class ValidationErrorTransform(transform.BaseTransform):
             sources (List[marshmallow.exceptions.ValidationError]): A list of ValidationErrors to transform.
 
         Returns:
-            List[models.JsonError]: A list of JsonError objects representing all ValidationErrors. Returned list will
-                be greater than or equal to the length of `source`.
+            List[pyll_json_errors.models.JsonError]: A list of JsonError objects representing all ValidationErrors.
+                Returned list will be greater than or equal to the length of `source`.
         """
         errors = []
         json_errors = []

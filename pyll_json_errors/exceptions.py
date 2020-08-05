@@ -13,7 +13,8 @@ class ConcreteJsonError(JsonErrorException):
 
     Args:
         message (str): Exception message.
-        json_errors (Union[models.JsonErrorArray, List[models.JsonError]]): Errors to attach to the exception.
+        json_errors (Union[pyll_json_errors.models.JsonErrorArray, List[pyll_json_errors.models.JsonError]]): Errors
+            to attach to the exception.
 
     Raises:
         TypeError: Raised if passed `json_errors` are not the expected type.

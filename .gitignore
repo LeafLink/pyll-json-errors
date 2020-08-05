@@ -10,10 +10,6 @@ test-results/**
 # dist
 dist/
 
-# documentation
-docs/**
-!docs/.gitkeep
-
 # libraries
 *.sqlite3
 env/**

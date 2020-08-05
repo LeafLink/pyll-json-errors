@@ -1,11 +1,11 @@
-"""Base object to JSON API error transformation module."""
+"""Contains abstract transformation class."""
 from abc import ABC, abstractmethod
 
 from pyll_json_errors.models import JsonErrorArray
 
 
 class BaseTransform(ABC):
-    """Base abstract class which all transformer classes should inherit.
+    """Base abstract class which all transformer classes inherit.
 
     When adding a new type of transformer (say for a new module in `pyll_json_errors.contrib`), they should inherit
     from this class and implement `make_json_errors()`.
@@ -23,27 +23,28 @@ class BaseTransform(ABC):
             sources (List[Any]): A list of source objects to convert.
 
         Returns:
-            List[models.JsonError]: A list of JsonError objects. **Does not return a JsonErrorArray**.
+            List[pyll_json_errors.models.JsonError]: A list of `pyll_json_errors.models.JsonError` objects.
+                **Does not return a `pyll_json_errors.models.JsonErrorArray`.**
         """
 
     def to_list(self, *, sources):
-        """Transform source data into a list of JsonError objects.
+        """Transform source data into a list of `pyll_json_errors.models.JsonError` objects.
 
         Args:
             sources (List[Any]): A list of source objects to convert.
 
         Returns:
-            List[models.JsonError]: A list of JsonErrors.
+            List[pyll_json_errors.models.JsonError]: A list of `pyll_json_errors.models.JsonError` objects.
         """
         return self.make_json_errors(sources)
 
     def to_array(self, *, sources):
-        """Transform source data into a single JsonErrorArray object.
+        """Transform source data into a single `pyll_json_errors.models.JsonErrorArray` object.
 
         Args:
             sources (List[Any]): A list of source objects to convert.
 
         Returns:
-            models.JsonErrorArray: A single JsonErrorArray object
+            pyll_json_errors.models.JsonErrorArray: A single `pyll_json_errors.models.JsonErrorArray` object.
         """
         return JsonErrorArray(self.make_json_errors(sources))
