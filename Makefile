@@ -1,5 +1,4 @@
 # Script constants
-
 .DEFAULT_GOAL := help
 LOCALHOST=0.0.0.0
 PDOCS_PORT=5001
@@ -8,7 +7,7 @@ PDOCS_PORT=5001
 docs-server:
 	@echo "Running PDocs development server on port $(PDOCS_PORT)"
 	DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings \
-	poetry run pdoc pyll_json_errors --html --output-dir docs --force --http $(LOCALHOST):$(PDOCS_PORT)
+	poetry run pdoc pyll_json_errors --html --template-dir docs/pdoc_templates --http $(LOCALHOST):$(PDOCS_PORT)
 
 format:
 	@echo "Linting and fixing code..."

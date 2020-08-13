@@ -1,4 +1,4 @@
-"""Contains convenient functions for creating generic JsonErrorArray objects."""
+"""Contains convenient functions for creating generic `pyll_json_errors.models.JsonErrorArray` objects."""
 from pyll_json_errors.models import JsonError, JsonErrorArray
 
 
@@ -14,7 +14,7 @@ def error400(*, title="Bad Request", detail=None):
         detail (Optional[str]): The detail to associate with the error.
 
     Returns:
-        models.JsonErrorArray: A JsonErrorArray containing one error.
+        pyll_json_errors.models.JsonErrorArray: A JsonErrorArray containing one error.
     """
     return _generic_error(title, detail, 400)
 
@@ -27,7 +27,7 @@ def error403(*, title="Forbidden", detail=None):
         detail (Optional[str]): The detail to associate with the error.
 
     Returns:
-        models.JsonErrorArray: A JsonErrorArray containing one error.
+        pyll_json_errors.models.JsonErrorArray: A JsonErrorArray containing one error.
     """
     return _generic_error(title, detail, 403)
 
@@ -40,6 +40,6 @@ def error404(*, title="Not found", detail=None):
         detail (Optional[str]): The detail to associate with the error.
 
     Returns:
-        models.JsonErrorArray: A JsonErrorArray containing one error.
+        pyll_json_errors.models.JsonErrorArray: A JsonErrorArray containing one error.
     """
     return _generic_error(title, detail, 404)

@@ -10,7 +10,7 @@ from pyll_json_errors import constants
 
 
 class BaseJson(ABC):
-    """Abstract class which all concrete JSON API object classes should inherit."""
+    """Abstract class which all concrete JSON API object classes inherit."""
 
     @abstractmethod
     def as_dict(self):
@@ -48,7 +48,7 @@ class JsonErrorSourceParameter(BaseJson):
 class JsonErrorSourcePointer(BaseJson):
     """Represents a pointer type JSON API error `source` object.
 
-    Notes: See documentation for `utils.flatten_dict` for more information and example keys.
+    Notes: See documentation for `pyll_json_errors.utils.flatten_dict` for more information and example keys.
 
     Args:
        keys (Tuple[str]): An tuple of strings which represents the path of the error in some object.
@@ -59,9 +59,19 @@ class JsonErrorSourcePointer(BaseJson):
             "one": {
                 "two": ["some error"]
             }
+            "list": [
+                {
+                    "error": "hello world"
+                },
+                {
+                    "error": "foobar"
+                }
+            ]
         }
 
-        # "some error"'s keys would be ("one", "two", "0")
+        # "some error"'s keys would be ("one", "two")
+        # "hello world"'s keys would be ("list", "0", "error")
+        # "foobar"'s keys would be ("list", "1", "error")
         ```
     """
 
@@ -98,7 +108,7 @@ class JsonError(BaseJson):
         detail (Optional[str]): A human-readable explanation specific to this occurrence of the problem.
         source (Optional[Union[JsonErrorSourceParameter, JsonErrorSourcePointer]]): An object containing references
             to the source of the error.
-        meta (Optional[Union[models.BaseJson, dict]]): Non-standard meta-information about the error.
+        meta (Optional[Union[BaseJson, dict]]): Non-standard meta-information about the error.
 
     Raises:
         TypeError: Raised if `source` or `meta` are not the expected types.
@@ -152,13 +162,13 @@ class JsonError(BaseJson):
 
 
 class JsonErrorArray(BaseJson):
-    """Representation of multiple JsonError objects.
+    """Representation of multiple `pyll_json_errors.models.JsonError` objects.
 
     Manages various attributes of the top level "errors" JSON API object.
 
 
     Attributes:
-        errors (List[JsonError]): The list of JsonError objects.
+        errors (List[pyll_json_errors.models.JsonError]): The list of JsonError objects.
         fallback_status (int): The fallback HTTP status code to use for HTTP responses if one cannot be derived from
             provided errors. Defaults to 400.
         override_status (Optional[int]): If set, this value will always be returned as the status.

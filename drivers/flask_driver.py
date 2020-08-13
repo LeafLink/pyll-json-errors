@@ -1,4 +1,4 @@
-"""Driver application for test and examples of Flask integration."""
+"""Driver application for examples of Flask integration."""
 from flask import Flask, abort, url_for
 from werkzeug import exceptions as w_exceptions
 
@@ -49,7 +49,7 @@ def basic():
 
 @app.route("/errors/raised/array")
 def raised_array():
-    """Basic example of multiple errors returned via flask.make_response()."""
+    """ConcreteJsonError exceptions are automatically caught and converted into response for wrapped apps."""
     err1 = JsonError(status=400, title="Some Issue", detail="This is error 1.")
     err2 = JsonError(status=422, title="Dependency Failure", detail="This is error 2.")
     array = JsonErrorArray([err1, err2])
@@ -58,7 +58,7 @@ def raised_array():
 
 @app.route("/errors/raised/list")
 def raised_list():
-    """Example of returning errors by raising exceptions.ConcreteJsonError()."""
+    """ConcreteJsonError exceptions are automatically caught and converted into response for wrapped apps."""
     err1 = JsonError(status=400, title="Some Issue", detail="This is error 1.")
     err2 = JsonError(status=422, title="Dependency Failure", detail="This is error 2.")
     raise exceptions.ConcreteJsonError("", [err1, err2])

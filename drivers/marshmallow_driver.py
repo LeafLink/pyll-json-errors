@@ -1,4 +1,4 @@
-"""Driver application for test and examples of Marshmallow integration."""
+"""Driver application for examples of Marshmallow integration."""
 import json
 
 from marshmallow import Schema, ValidationError, fields, validate, validates, validates_schema
@@ -92,7 +92,7 @@ def get_email_data(
     to=[{"email": "queen@phantomthieves.com", "name": "Makoto Niijima"},],
     reply_to=[{"email": "morgana@phantomthieves.com", "name": "Morgana"},],
     subject="Subject",
-    body={"text": "A Basic Email", "html": "<b>A Fancy Email</b>"},
+    body={"text": "A Basic Email", "html": "<em>A Fancy Email</em>"},
 ):
     """Gets example data to validate."""
     return {"from": sender, "bcc": bcc, "cc": cc, "to": to, "reply_to": reply_to, "subject": subject, "body": body}
@@ -138,7 +138,7 @@ def nested_objects():
 
 
 def multiple_errors_on_same_field():
-    """Nested objects."""
+    """Multiple errors on a nested objec."""
     data = get_email_data(sender={"email": "mark@leaflink.net"})
     run_example("multiple_errors_on_same_field", data)
 
