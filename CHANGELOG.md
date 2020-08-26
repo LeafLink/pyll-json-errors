@@ -1,0 +1,48 @@
+# Changelog
+---
+
+## Unrealeased ([compare](https://github.com/LeafLink/pyll-json-errors/compare/073e6b4158d450ff89fe34df8073dd472e3e1b42...HEAD))
+
+### Added
+- Add build docs make command ([5e50420](https://github.com/LeafLink/pyll-json-errors/commit/5e504208ebf0a394a17f97a4a7bf7e64a5848087)).
+
+### Misc
+- * Add first unit tests. * Add new flask functions. * Update package directory structure. ([acedfe4](https://github.com/LeafLink/pyll-json-errors/commit/acedfe497aff48032ea6d5c326b25292452abe5e)).
+- * Add logo.mako template * Add contrib doc * Update readme * Update various python source docs ([513aeb7](https://github.com/LeafLink/pyll-json-errors/commit/513aeb7fafcf03df66a73b089c263b13f1170d2d)).
+- * JsonErrorSourcePointer now expects a tuple of strs instead of a str. * flatten_dict() returns tuple, Any instead of str, Any. ([33a0d90](https://github.com/LeafLink/pyll-json-errors/commit/33a0d90ad9218da8d34d6daa71d473587b8443db)).
+- * Update Readme. ([aa8de97](https://github.com/LeafLink/pyll-json-errors/commit/aa8de97da93240fdf6cea747e119ea7fc1c5009c)).
+- * Update toml with helpful info for public packages ([36693ce](https://github.com/LeafLink/pyll-json-errors/commit/36693ce0d5bd287bd20dbbc4893a3a3813d3a473)).
+- + django rest integration + django driver ([d850cb4](https://github.com/LeafLink/pyll-json-errors/commit/d850cb46a5b0a102dc8ccd5917118a125cce1165)).
+- + rename driver + tests ([cc1a813](https://github.com/LeafLink/pyll-json-errors/commit/cc1a813d501b5ad5ab3d0607cd324fc97b04ad28)).
+- - Adding Dockerfile, CircleCI jobs, and Make command to facilitate documentation generation. ([403e98f](https://github.com/LeafLink/pyll-json-errors/commit/403e98fd2d23f15237774caf0030a4541c63e696)).
+- - Adding S3 publishing logic and CircleCI context refs into circle config ([192e1d0](https://github.com/LeafLink/pyll-json-errors/commit/192e1d04af5d55c025c91c10e1ee06156f2948a7)).
+- Committing to master because I cant figure out Circle. ([8df29b3](https://github.com/LeafLink/pyll-json-errors/commit/8df29b3e5639038cb9315f0e0caa77d63d95964b)).
+- initial commit. ([073e6b4](https://github.com/LeafLink/pyll-json-errors/commit/073e6b4158d450ff89fe34df8073dd472e3e1b42)).
+- LLF-1107: Add CCI badge ([9303674](https://github.com/LeafLink/pyll-json-errors/commit/930367439b4229bb1341468b99c9f9ae78027c66)).
+- LLF-1107: Add codecov badge ([0646e39](https://github.com/LeafLink/pyll-json-errors/commit/0646e39119cc0eb0c1ea38c92886c37c11c9090d)).
+- LLF-1107: Add codecov to circle ([e216d8d](https://github.com/LeafLink/pyll-json-errors/commit/e216d8d7f2580c8596bfac2c9f0c3483e6cf7a35)).
+- LLF-1107: Start circle config work ([449339e](https://github.com/LeafLink/pyll-json-errors/commit/449339e04c44524ffa6e562ed68ffeb77127104c)).
+- LLF-1108: Transform Interface (#1) ([3043c61](https://github.com/LeafLink/pyll-json-errors/commit/3043c616fc01caec5a96de0227655f44ffb2eb9c)).
+- LLF-1113: Add _check_dependency method ([a36dc16](https://github.com/LeafLink/pyll-json-errors/commit/a36dc1622a4d4a0144564411e93168a327928d10)).
+- LLF-1113: Add optional dependencies ([d5724e1](https://github.com/LeafLink/pyll-json-errors/commit/d5724e150dd51701522ae458575efcd2ce387571)).
+- LLF-1113: Remove unneeded logger ([5061961](https://github.com/LeafLink/pyll-json-errors/commit/5061961475c24dfea67664a31beafb2467a03ebf)).
+- LLF-1113: Update circle config ([e4079c9](https://github.com/LeafLink/pyll-json-errors/commit/e4079c9096abe7210d369838aad8082c8b2ac3e6)).
+- LLF-1171: complex error example tests (#8) ([42b9c2d](https://github.com/LeafLink/pyll-json-errors/commit/42b9c2d3724ae1f497858ee64c0123ac847f71f9)).
+- part 10 ([c6cf6af](https://github.com/LeafLink/pyll-json-errors/commit/c6cf6af78461ce36948c4b972fb7653be43c18e9)).
+- part 11 ([75e5c87](https://github.com/LeafLink/pyll-json-errors/commit/75e5c872f258f158e8a8ac918577d1557fe7c85f)).
+- part 12 ([de1c64e](https://github.com/LeafLink/pyll-json-errors/commit/de1c64e85055611e91d31ba654fe55af9f485b93)).
+- part 13 ([0577951](https://github.com/LeafLink/pyll-json-errors/commit/0577951870acd13bab10c4cbc49d73d519023635)).
+- part 14 ([706dc87](https://github.com/LeafLink/pyll-json-errors/commit/706dc876393faa755697e58d9b555acda1a4e891)).
+- part 15 ([8d92987](https://github.com/LeafLink/pyll-json-errors/commit/8d92987cfd3c277c6c5588457eed3b6e85679294)).
+- part 16 ([e7017c8](https://github.com/LeafLink/pyll-json-errors/commit/e7017c8216b6b986c5c567742ff71d132514ac55)).
+- part 18 ([624eee9](https://github.com/LeafLink/pyll-json-errors/commit/624eee9172d6ab615e8c86dcc17b8c25834bd6db)).
+- part 3 ([153aec8](https://github.com/LeafLink/pyll-json-errors/commit/153aec848e0a26146068c6b33ca996ca54cbf16b)).
+- part 4 ([3a09ff5](https://github.com/LeafLink/pyll-json-errors/commit/3a09ff534cc219202e85083f5e7e617eec0569c2)).
+- part 5 ([17556b0](https://github.com/LeafLink/pyll-json-errors/commit/17556b0b58ed6e6d2539ecd37187aa9191d07845)).
+- part 6 ([76811b1](https://github.com/LeafLink/pyll-json-errors/commit/76811b193188fc95cd440a428ed42bd30a46119b)).
+- part 7 ([b938e63](https://github.com/LeafLink/pyll-json-errors/commit/b938e63bed42996bf82297b1eeb6c8b2733d036e)).
+- part 8 ([cb89db4](https://github.com/LeafLink/pyll-json-errors/commit/cb89db4d2c71d32d80147dcc6a75e3d417864c31)).
+- part 9 ([d419ea5](https://github.com/LeafLink/pyll-json-errors/commit/d419ea5c9a941fd68446032519ec7da1c8fa209a)).
+- Stablizing circleci python version ([122cbb5](https://github.com/LeafLink/pyll-json-errors/commit/122cbb53bf41d1627a029a96148ba1512898ee6c)).
+
+
