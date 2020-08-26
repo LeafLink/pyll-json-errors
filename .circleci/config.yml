@@ -20,8 +20,34 @@ jobs:
           file: ${PWD}/test-results/coverage.xml
       - store_test_results:
           path: test-results
+  generate_docs:
+    executor: python/default
+    steps:
+      - run:
+          name: Check Publish Eligibility
+          command: |
+            if [[ ! -z "${CIRCLE_TAG}" ]]; then
+              echo "Semver deploy detected. Proceeding to build and publish docs."
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "Master build detected. Proceeding to build and publish docs."
+            else
+              echo "Not a master/semver ref. Skipping documentation build."
+              circleci-agent step halt
+            fi
+      - checkout
+      - run:
+          name: Generate Docs
+          command: |
+            make docs-build-docker
+      - run:
+          name: Publish Docs
+          command: |
+            echo "Todo!"
 workflows:
   version: 2
   ci:
     jobs:
       - quality_checks
+      - generate_docs:
+          requires:
+            - quality_checks
