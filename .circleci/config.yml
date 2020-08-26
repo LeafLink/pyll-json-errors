@@ -4,6 +4,17 @@ orbs:
   python: circleci/python@0.3.2
   codecov: codecov/codecov@1.0.2
 
+# Reusable YAML fragments
+setup_remote_docker: &setup_remote_docker
+  setup_remote_docker:
+    docker_layer_caching: true
+
+main_env: &main_env
+  docker:
+    - image: circleci/buildpack-deps:buster
+  environment:
+    AWS_DEFAULT_REGION: "us-west-2"
+
 jobs:
   quality_checks:
     executor: python/default
@@ -21,7 +32,7 @@ jobs:
       - store_test_results:
           path: test-results
   generate_docs:
-    executor: python/default
+    <<: *main_env
     steps:
       - run:
           name: Check Publish Eligibility
@@ -32,9 +43,11 @@ jobs:
               echo "Master build detected. Proceeding to build and publish docs."
             else
               echo "Not a master/semver ref. Skipping documentation build."
+              # Short circuit the job
               circleci-agent step halt
             fi
       - checkout
+      - *setup_remote_docker
       - run:
           name: Generate Docs
           command: |
@@ -42,12 +55,26 @@ jobs:
       - run:
           name: Publish Docs
           command: |
-            echo "Todo!"
+            UPLOAD_PREFIX="stable"
+            if [[ ! -z "${CIRCLE_TAG}" ]]; then
+              UPLOAD_PREFIX="v${CIRCLE_TAG}"
+              echo "Semver tag detected. Publishing docs accordingly."
+            fi
+            echo "Publishing documentation for ${UPLOAD_PREFIX}"
+            docker run --rm \
+              --entrypoint /bin/bash \
+              -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
+              -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
+              -v $(pwd)/dist/:/tmp/dist/ \
+              leaflinkengineering/llp-awscli:0.3.0 \
+              -c "aws s3 cp /tmp/dist/pyll_json_errors/ s3://${S3_BUCKET_PYLL_ERRORS_DOCS}/json-errors/${UPLOAD_PREFIX}/ --recursive --acl public-read"
+
 workflows:
   version: 2
   ci:
     jobs:
       - quality_checks
       - generate_docs:
+          context: s3-doc-publishing
           requires:
             - quality_checks

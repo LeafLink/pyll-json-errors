@@ -16,9 +16,7 @@ docs-server:
 
 docs-build-docker:
 	@echo "Cleaning up old ./dist directory..."
-	set +e
-	rm -r ./$(PDOCS_OUTPUT_PATH)
-	set -e
+	rm -r ./$(PDOCS_OUTPUT_PATH) || true
 	mkdir ./$(PDOCS_OUTPUT_PATH)
 	@echo "Building container image..."
 	docker build -t pyll-json-errors .
