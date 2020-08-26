@@ -4,8 +4,13 @@ LOCALHOST=0.0.0.0
 PDOCS_PORT=5001
 
 
+docs-build:
+	@echo "Building package documentation static assets via PDoc3..."
+	DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings \
+	poetry run pdoc pyll_json_errors --html --template-dir docs/pdoc_templates --output-dir ./dist --force
+
 docs-server:
-	@echo "Running PDocs development server on port $(PDOCS_PORT)"
+	@echo "Running PDoc3 development server on port $(PDOCS_PORT).."
 	DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings \
 	poetry run pdoc pyll_json_errors --html --template-dir docs/pdoc_templates --http $(LOCALHOST):$(PDOCS_PORT)
 
@@ -37,6 +42,7 @@ help:
 	@echo "  LeafLink Mail Service Commands"
 	@echo "  |"
 	@echo "  |_ help (default)          - Show this message."
+	@echo "  |_ docs-build              - Build package documentation HTML."
 	@echo "  |_ docs-server             - Start a PDocs development server."
 	@echo "  |_ format                  - Lint code and fix any errors."
 	@echo "  |_ lint                    - Lint code, does not fix any errors."
@@ -46,6 +52,7 @@ help:
 	@echo " "
 
 .PHONY:
+	docs-build
 	docs-server
 	format
 	lint
