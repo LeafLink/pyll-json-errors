@@ -1,10 +1,17 @@
 # Changelog
 ---
 
-## [0.1.2](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.2) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.1...0.1.2))
+## [0.1.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.2...0.1.3))
+
+### Misc
+- - More adjustments to CircleCI tag triggering ... ([6cf3309](https://github.com/LeafLink/pyll-json-errors/commit/6cf3309259c4f72430e1e981fc5537ed6509203c)).
+
+
+## [0.1.2](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.2) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.1...0.1.2)) - 2020-08-27
 
 ### Misc
 - - Doh ... mixed up version tagging (confused w/ the s3 bucket pathing for releases lol) ([87c3d22](https://github.com/LeafLink/pyll-json-errors/commit/87c3d221b64f64ca2a40fb1ae428ed075c653d3b)).
+- Updated files for release 0.1.2 ([e43ea8f](https://github.com/LeafLink/pyll-json-errors/commit/e43ea8fc6a2c7aef1713115ed44ff608efd3b05a)).
 
 
 ## [0.1.1](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.1) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.0...0.1.1)) - 2020-08-27
