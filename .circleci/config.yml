@@ -34,18 +34,6 @@ jobs:
   generate_docs:
     <<: *main_env
     steps:
-      - run:
-          name: Check Publish Eligibility
-          command: |
-            if [[ ! -z "${CIRCLE_TAG}" ]]; then
-              echo "Semver deploy detected. Proceeding to build and publish docs."
-            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "Master build detected. Proceeding to build and publish docs."
-            else
-              echo "Not a master/semver ref. Skipping documentation build."
-              # Short circuit the job
-              circleci-agent step halt
-            fi
       - checkout
       - *setup_remote_docker
       - run:
@@ -78,3 +66,8 @@ workflows:
           context: s3-doc-publishing
           requires:
             - quality_checks
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /^v\d{1,}[.]\d{1,}[.]\d{1,}
