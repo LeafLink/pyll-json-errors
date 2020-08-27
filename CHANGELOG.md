@@ -1,7 +1,13 @@
 # Changelog
 ---
 
-## Unrealeased ([compare](https://github.com/LeafLink/pyll-json-errors/compare/073e6b4158d450ff89fe34df8073dd472e3e1b42...HEAD))
+## [0.1.1](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.1) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.0...0.1.1))
+
+### Misc
+- - Adding in branch/tag filtering so that builds actually trigger for tags. ([1a1c4e7](https://github.com/LeafLink/pyll-json-errors/commit/1a1c4e780de164c47a4a30ac8e7dfdcba92f63b2)).
+
+
+## [0.1.0](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.0) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/073e6b4158d450ff89fe34df8073dd472e3e1b42...0.1.0)) - 2020-08-26
 
 ### Added
 - Add build docs make command ([5e50420](https://github.com/LeafLink/pyll-json-errors/commit/5e504208ebf0a394a17f97a4a7bf7e64a5848087)).
@@ -44,5 +50,6 @@
 - part 8 ([cb89db4](https://github.com/LeafLink/pyll-json-errors/commit/cb89db4d2c71d32d80147dcc6a75e3d417864c31)).
 - part 9 ([d419ea5](https://github.com/LeafLink/pyll-json-errors/commit/d419ea5c9a941fd68446032519ec7da1c8fa209a)).
 - Stablizing circleci python version ([122cbb5](https://github.com/LeafLink/pyll-json-errors/commit/122cbb53bf41d1627a029a96148ba1512898ee6c)).
+- Updated files for release 0.1.0 ([e9f3ae9](https://github.com/LeafLink/pyll-json-errors/commit/e9f3ae968090a8cbc543852405f52bfe0fc017e6)).
 
 
