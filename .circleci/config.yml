@@ -61,7 +61,10 @@ workflows:
   version: 2
   ci:
     jobs:
-      - quality_checks
+      - quality_checks:
+          filters:
+            branches:
+              only: master
       - generate_docs:
           context: s3-doc-publishing
           requires:
@@ -70,4 +73,4 @@ workflows:
             branches:
               only: master
             tags:
-              only: /^v\d{1,}[.]\d{1,}[.]\d{1,}
+              only: /^\d{1,}[.]\d{1,}[.]\d{1,}
