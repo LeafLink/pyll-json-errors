@@ -17,7 +17,7 @@ sdocs-build:
 	make _sphinx-build-html target="$(SDOCS_DIST_DIR)"
 
 _sphinx-build-html:
-	poetry run sphinx-build -b html $(SDOCS_SOURCE_DIR) $(target)/html
+	poetry run sphinx-versioning build sdocs/src $(target)/html
 
 docs-build:
 	@echo "Building package documentation static assets via PDoc3..."

@@ -73,3 +73,10 @@ html_sidebars = {
         "searchbox.html",
     ]
 }
+
+
+
+# -- Versioning ---------------------------------------------------------------
+
+scv_whitelist_branches = ('taco',)
+scv_whitelist_tags = ("0.0.1", "0.0.2")

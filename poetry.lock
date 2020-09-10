@@ -125,6 +125,14 @@ version = "0.4.3"
 
 [[package]]
 category = "dev"
+description = "Colorful worry-free console applications for Linux, Mac OS X, and Windows."
+name = "colorclass"
+optional = false
+python-versions = "*"
+version = "2.2.0"
+
+[[package]]
+category = "dev"
 description = "Code coverage measurement for Python"
 name = "coverage"
 optional = false
@@ -537,6 +545,19 @@ test = ["pytest", "pytest-cov", "html5lib", "typed-ast", "cython"]
 
 [[package]]
 category = "dev"
+description = "Sphinx extension that allows building versioned docs for self-hosting."
+name = "sphinx-versions"
+optional = false
+python-versions = "*"
+version = "1.1.3"
+
+[package.dependencies]
+click = "*"
+colorclass = "*"
+sphinx = "*"
+
+[[package]]
+category = "dev"
 description = "sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books"
 name = "sphinxcontrib-applehelp"
 optional = false
@@ -683,7 +704,7 @@ marshmallow = ["marshmallow"]
 rest_framework = ["djangorestframework", "werkzeug"]
 
 [metadata]
-content-hash = "2fa2719536ca4d6d57959d5589229c19639607f679006dbfd1b60b0bfb026bd9"
+content-hash = "0eab60d4813202760241f9954ae2ef8a4428cef23764db065f43b6b6e74797a6"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -733,6 +754,9 @@ click = [
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
     {file = "colorama-0.4.3.tar.gz", hash = "sha256:e96da0d330793e2cb9485e9ddfd918d456036c7149416295932478192f4436a1"},
+]
+colorclass = [
+    {file = "colorclass-2.2.0.tar.gz", hash = "sha256:b05c2a348dfc1aff2d502527d78a5b7b7e2f85da94a96c5081210d8e9ee8e18b"},
 ]
 coverage = [
     {file = "coverage-5.2.1-cp27-cp27m-macosx_10_13_intel.whl", hash = "sha256:40f70f81be4d34f8d491e55936904db5c527b0711b2a46513641a5729783c2e4"},
@@ -941,6 +965,10 @@ snowballstemmer = [
 sphinx = [
     {file = "Sphinx-3.2.1-py3-none-any.whl", hash = "sha256:ce6fd7ff5b215af39e2fcd44d4a321f6694b4530b6f2b2109b64d120773faea0"},
     {file = "Sphinx-3.2.1.tar.gz", hash = "sha256:321d6d9b16fa381a5306e5a0b76cd48ffbc588e6340059a729c6fdd66087e0e8"},
+]
+sphinx-versions = [
+    {file = "sphinx-versions-1.1.3.tar.gz", hash = "sha256:f51385123113f9dd837e0e031f1d08a94377e281b06380066e2eed78ae18991f"},
+    {file = "sphinx_versions-1.1.3-py3-none-any.whl", hash = "sha256:db7d0c698e540a45ccf61ddbf2cab79fcd23222df59324f752ef918410ee4f0f"},
 ]
 sphinxcontrib-applehelp = [
     {file = "sphinxcontrib-applehelp-1.0.2.tar.gz", hash = "sha256:a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58"},
