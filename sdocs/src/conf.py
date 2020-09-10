@@ -79,4 +79,4 @@ html_sidebars = {
 # -- Versioning ---------------------------------------------------------------
 
 scv_whitelist_branches = ('taco',)
-scv_whitelist_tags = ("0.0.3",)
+scv_whitelist_tags = ("0.0.3", "0.0.5")
