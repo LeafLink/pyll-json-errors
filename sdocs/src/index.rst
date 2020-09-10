@@ -1,7 +1,7 @@
 Pyll JSON Errors
 ================
 
-User's Guide
+User's Guide 2
 ------------
 
 .. toctree::
