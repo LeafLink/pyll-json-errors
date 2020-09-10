@@ -1,8 +1,23 @@
 # Script constants
-.DEFAULT_GOAL := help
+PWD=`pwd`
+DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings \
 LOCALHOST=0.0.0.0
+SDOCS_DIST_DIR=$(PWD)/sdocs/dist
+SDOCS_SERVE_DIR=$(PWD)/sdocs/serve
+SDOCS_SOURCE_DIR=$(PWD)/sdocs/src
 PDOCS_PORT=5001
 PDOCS_OUTPUT_PATH=dist
+
+.DEFAULT_GOAL := help
+
+sdocs-build:
+	@echo "Build HTML documentation via sphinx..."
+	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS_MODULE) \
+	mkdir -p $(SDOCS_DIST_DIR)
+	make _sphinx-build-html target="$(SDOCS_DIST_DIR)"
+
+_sphinx-build-html:
+	poetry run sphinx-build -b html $(SDOCS_SOURCE_DIR) $(target)/html
 
 docs-build:
 	@echo "Building package documentation static assets via PDoc3..."
@@ -48,7 +63,7 @@ test-ci:
 
 # Help Docs
 help:
-	@echo "  LeafLink Mail Service Commands"
+	@echo "  Make Commands Help Menu"
 	@echo "  |"
 	@echo "  |_ help (default)          - Show this message."
 	@echo "  |_ docs-build              - Build package documentation HTML."

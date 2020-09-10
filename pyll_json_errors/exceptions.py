@@ -12,12 +12,12 @@ class ConcreteJsonError(JsonErrorException):
     Convenient for raising an exception and using attached errors for some further processing.
 
     Args:
-        message (str): Exception message.
-        json_errors (Union[pyll_json_errors.models.JsonErrorArray, List[pyll_json_errors.models.JsonError]]): Errors
-            to attach to the exception.
+        message (:obj:`str`): Exception message.
+        json_errors (:obj:`~pyll_json_errors.models.JsonErrorArray` or :obj:`list`):
+            A list of :obj:`~pyll_json_errors.models.JsonError` errors to attach to the exception.
 
     Raises:
-        TypeError: Raised if passed `json_errors` are not the expected type.
+        TypeError: Raised if passed :code:`json_errors` are not the expected type.
     """
 
     def __init__(self, message, json_errors):
