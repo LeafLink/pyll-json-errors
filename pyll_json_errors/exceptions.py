@@ -1,4 +1,7 @@
-"""Library exception classes."""
+"""Pyll JSON Errors exception classes.
+
+This module holds all of the custom exceptions raise by the package.
+"""
 from pyll_json_errors.models import JsonError, JsonErrorArray
 
 
@@ -12,9 +15,10 @@ class ConcreteJsonError(JsonErrorException):
     Convenient for raising an exception and using attached errors for some further processing.
 
     Args:
-        message (:obj:`str`): Exception message.
-        json_errors (:obj:`~pyll_json_errors.models.JsonErrorArray` or :obj:`list`):
-            A list of :obj:`~pyll_json_errors.models.JsonError` errors to attach to the exception.
+        message (str): Exception message.
+        json_errors (~pyll_json_errors.models.JsonErrorArray or list):
+            Either a :obj:`~pyll_json_errors.models.JsonErrorArray` or a list of
+            :obj:`~pyll_json_errors.models.JsonError` errors to attach to the exception.
 
     Raises:
         TypeError: Raised if passed :code:`json_errors` are not the expected type.

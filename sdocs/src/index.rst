@@ -1,7 +1,7 @@
 Pyll JSON Errors
 ================
 
-User's Guide 2
+User's Guide
 ------------
 
 .. toctree::
@@ -9,11 +9,10 @@ User's Guide 2
 
    installation
    quickstart
-   contrib-modules
    json-api-errors
 
-API Reference
--------------
+API
+---
 
 .. toctree::
    :maxdepth: 2

@@ -26,4 +26,4 @@ COPY ./ .
 
 EXPOSE 5001
 
-ENTRYPOINT [ "make", "docs-server" ]
+ENTRYPOINT [ "make", "docs-serve" ]

@@ -29,7 +29,10 @@ author = "LeafLink Engineering"
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.napoleon"
+    "sphinx.ext.autosectionlabel",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.napoleon",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,6 +55,7 @@ html_theme = "alabaster"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+html_js_files = ["pyll.js"]
 
 html_theme_options = {
     "github_button": False,
@@ -68,15 +72,31 @@ html_theme_options = {
 }
 html_sidebars = {
     "**": [
+        "logo.html",
         "navigation.html",
         "relations.html",
         "searchbox.html",
+        "versions.html",
     ]
 }
 
+html_context = {
+    "github_repo": "LeafLink/pyll-json-errors",
+    "docs_host": "https://pyll-dev-docs.leaflink.comz",
+}
 
+# -- InterSphinx Configuration ------------------------------------------------
 
-# -- Versioning ---------------------------------------------------------------
+intersphinx_mapping = {
+    "flask": ("https://flask.palletsprojects.com/en/1.1.x", None),
+    "marshmallow": ("https://marshmallow.readthedocs.io/en/stable/", None),
+    "werkzeug": ("https://werkzeug.palletsprojects.com/en/1.0.x", None),
+}
 
-scv_whitelist_branches = ('taco',)
-scv_whitelist_tags = ("0.0.3", "0.0.5")
+# -- External Links Configuration ---------------------------------------------
+
+extlinks = {
+    "drf_gh": ("https://github.com/encode/django-rest-framework/tree/master/%s", ""),
+    "drf_ref": ("https://www.django-rest-framework.org/api-guide/%s", ""),
+    "gh": ("https://github.com/LeafLink/pyll-json-errors/tree/master/%s", "")
+}

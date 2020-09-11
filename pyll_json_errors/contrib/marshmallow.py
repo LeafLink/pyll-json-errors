@@ -1,9 +1,11 @@
-"""Integrate JSON API errors with Marshmallow validation and schemas.
+"""Integrate Pyll JSON API errors with Marshmallow validation and schemas.
 
-[Marshmallow docs](https://marshmallow.readthedocs.io/en/stable/)
+In order to use this module, the :code:`marshmallow` optional dependency must be installed. See :ref:`Installation`.
 
-See the [driver Marshmallow app](https://github.com/LeafLink/pyll-json-errors/blob/master/drivers/marshmallow_driver.py)
-for examples on integrating `pyll_json_errors` with Marshmallow.
+`Marshmallow docs <https://marshmallow.readthedocs.io/en/stable/>`_
+
+See the :gh:`driver Marshmallow app <drivers/marshmallow_driver.py>`
+for examples on integrating :mod:`pyll_json_errors` with Marshmallow.
 """
 from pyll_json_errors import _check_dependency
 
@@ -13,20 +15,21 @@ from pyll_json_errors import models, transform, utils
 
 
 class ValidationErrorTransform(transform.BaseTransform):
-    """Marshmallow ValidationErrors transformer."""
+    """Transform :py:class:`marshmallow.exceptions.ValidationError` objects."""
 
     validation_error_status = 400
-    """HTTP status code for validation failure responses. (`400`)"""
+    """int: HTTP status code for validation failure responses."""
 
     def make_json_errors(self, sources):
-        """Transform marshmallow ValidationErrors into models.JsonError objects.
+        """Transform :py:class:`marshmallow.exceptions.ValidationError` objects.
 
         Args:
-            sources (List[marshmallow.exceptions.ValidationError]): A list of ValidationErrors to transform.
+            sources (list): A list of Marshmallow :py:class:`~marshmallow.exceptions.ValidationError` objects.
 
         Returns:
-            List[pyll_json_errors.models.JsonError]: A list of JsonError objects representing all ValidationErrors.
-                Returned list will be greater than or equal to the length of `source`.
+            list: A list of :obj:`~pyll_json_errors.models.JsonError` objects representing the provided
+            Marshmallow :py:class:`~marshmallow.exceptions.ValidationError`. Returned list will be greater than or
+            equal to the length of :code:`source`.
         """
         errors = []
         json_errors = []

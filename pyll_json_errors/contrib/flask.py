@@ -1,9 +1,11 @@
-"""Integrate JSON API errors into Flask applications.
+"""Integrate Pyll JSON API errors into Flask applications.
 
-[Flask docs](https://flask.palletsprojects.com/en/1.1.x/)
+In order to use this module, the :code:`flask` optional dependency must be installed. See :ref:`Installation`.
 
-See the [driver Flask app](https://github.com/LeafLink/pyll-json-errors/blob/master/drivers/flask_driver.py)
-for examples on integrating `pyll_json_errors` into Flask.
+`Flask docs <https://flask.palletsprojects.com/en/1.1.x/>`_
+
+See the :gh:`driver Flask app <drivers/flask_driver.py>`
+for examples on integrating :mod:`pyll_json_errors` into Flask.
 """
 from pyll_json_errors import _check_dependency
 
@@ -15,24 +17,25 @@ from pyll_json_errors import constants, exceptions, generics, models, transform
 
 
 def make_response(*, json_errors, mimetype=constants.HEADER_CONTENT_TYPE_VALUE):
-    """Create a Flask Response object from a JsonErrorArray.
+    """Create a Flask :py:class:`~flask.Response` object from a :obj:`~pyll_json_errors.models.JsonErrorArray` object.
 
     Args:
-        json_errors (pyll_json_errors.models.JsonErrorArray): The errors array to generate an HTTP response from.
-        mimetype (str): The mimetype the Response will return with.
+        json_errors (~pyll_json_errors.models.JsonErrorArray): The errors array to generate an HTTP response from.
+        mimetype (str): The mimetype the Flask :py:class:`~flask.Response` will return with.
 
     Returns:
-        flask.Response: A Flask Response object which can be returned from a Flask view controller function.
+        flask.Response: A Flask :py:class:`~flask.Response` object which can be returned from a Flask
+        view controller function.
     """
     return Response(json_errors.serialized(), status=json_errors.status, mimetype=mimetype)
 
 
 def wrap_app(app):
-    """Wraps a Flask application, adding various error handlers automatically.
+    """Wraps a :py:class:`flask.Flask` application, adding various error handlers automatically.
 
     Wrapping an application provides automatic JSON API errors responses for 403 and 404 responses.
     It also provides automatic JSON API error responses for view controllers which raise
-    `pyll_json_errors.exceptions.ConcreteJsonError` errors.
+    :class:`~pyll_json_errors.exceptions.ConcreteJsonError` errors.
 
     Args:
         app (flask.Flask): The Flask object to wrap.
@@ -55,17 +58,19 @@ def wrap_app(app):
 
 
 class HttpExceptionTransform(transform.BaseTransform):
-    """werkzeug HTTPExceptions transformer."""
+    """Transform :py:class:`werkzeug.exceptions.HTTPException` objects."""
 
     def make_json_errors(self, sources):
-        """Transform werkzeug HTTPExceptions into models.JsonError objects.
+        """
+        Transform :py:class:`werkzeug.exceptions.HTTPException` objects
+        into :obj:`~pyll_json_errors.models.JsonError` objects.
 
         Args:
-            sources (List[werkzeug.exceptions.HTTPException]): A list of HTTPExceptions to transform.
+            sources (list): A list of :py:class:`werkzeug.exceptions.HTTPException` objects to transform.
 
         Returns:
-            List[pyll_json_error.models.JsonError]: A list of JsonError objects representing each HTTPException.
-                Returned list will be the same length as `sources`.
+            list: A list of :obj:`~pyll_json_errors.models.JsonError` objects representing each
+            :py:class:`werkzeug.exceptions.HTTPException` object. Returned list will be same length as :code:`sources`.
         """
         return [
             models.JsonError(status=source.code, title=source.name, detail=source.description) for source in sources
