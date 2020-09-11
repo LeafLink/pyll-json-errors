@@ -1,7 +1,6 @@
 # Script constants
 PWD=`pwd`
-DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings \
-LOCALHOST=0.0.0.0
+DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings
 SDOCS_DIST_DIR=$(PWD)/sdocs/dist
 SDOCS_SERVE_DIR=$(PWD)/sdocs/serve
 SDOCS_SOURCE_DIR=$(PWD)/sdocs/src
@@ -29,7 +28,7 @@ _sphinx-serve-html:
 
 docs-build-docker:
 	@echo "Cleaning up old ./dist directory..."
-	rm -r .$(SDOCS_DIST_DIR) || true
+	rm -r $(SDOCS_DIST_DIR) || true
 	@echo "Building container image..."
 	docker build -t pyll-json-errors .
 	@echo "Generating sphinx docs and outputting to $(SDOCS_DIST_DIR)..."
@@ -65,7 +64,7 @@ help:
 	@echo "  |_ help (default)          - Show this message."
 	@echo "  |_ docs-build              - Build package documentation HTML."
 	@echo "  |_ docs-build-docker       - Build package documentation HTML in Docker. Outputs to ./dist."
-	@echo "  |_ docs-server             - Start a PDocs development server."
+	@echo "  |_ docs-serve              - Start a PDocs development server."
 	@echo "  |_ format                  - Lint code and fix any errors."
 	@echo "  |_ lint                    - Lint code, does not fix any errors."
 	@echo "  |_ test                    - Run unit tests."
@@ -76,7 +75,7 @@ help:
 .PHONY:
 	docs-build
 	docs-build-docker
-	docs-server
+	docs-serve
 	format
 	lint
 	test

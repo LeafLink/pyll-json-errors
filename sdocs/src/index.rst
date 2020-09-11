@@ -1,6 +1,8 @@
 Pyll JSON Errors
 ================
 
+Python library to implement LeafLink flavored JSON API errors in HTTP APIs.
+
 User's Guide
 ------------
 
