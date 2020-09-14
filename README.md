@@ -29,7 +29,7 @@ See https://pyll-dev-docs.leaflink.com/stable/index.html for `pyll-json-errors` 
 
 
 ## Library Documentation
-See the library's integration docs [here](http://tba).
+See the library's integration docs [here](https://pyll-dev-docs.leaflink.com/stable/index.html).
 
 
 ## Example and Driver Applications
@@ -47,5 +47,5 @@ Basic Marshmallow schema and validation example. Can be ran via: `. ./bin/marshm
 
 
 ## Contributing
-For guidance of on setting up a development environment and contributing to Pyll JSON Error see our
+For guidance of on setting up a development environment and contributing to Pyll JSON Errors see our
 [contributing](https://github.com/LeafLink/pyll-json-errors/blob/master/CONTRIBUTING.md) doc.
