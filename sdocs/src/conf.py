@@ -71,7 +71,7 @@ html_sidebars = {"**": ["logo.html", "navigation.html", "relations.html", "searc
 
 html_context = {
     "github_repo": "LeafLink/pyll-json-errors",
-    "docs_host": "https://pyll-dev-docs.leaflink.comz",
+    "docs_host": "https://pyll-dev-docs.leaflink.com",
 }
 
 # -- InterSphinx Configuration ------------------------------------------------
