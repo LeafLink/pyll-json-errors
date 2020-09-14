@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Publish Docs
           command: |
-            UPLOAD_PREFIX="test"
+            UPLOAD_PREFIX="stable"
             if [[ ! -z "${CIRCLE_TAG}" ]]; then
               UPLOAD_PREFIX="${CIRCLE_TAG}"
               echo "Semver tag detected. Publishing docs accordingly."
@@ -69,10 +69,10 @@ workflows:
               only: /\d{1,}[.]\d{1,}[.]\d{1,}/
       - generate_docs:
           context: s3-doc-publishing
-          # requires:
-          #   - quality_checks
-          # filters:
-          #   branches:
-          #     only: master
-          #   tags:
-          #     only: /\d{1,}[.]\d{1,}[.]\d{1,}/
+          requires:
+            - quality_checks
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /\d{1,}[.]\d{1,}[.]\d{1,}/
