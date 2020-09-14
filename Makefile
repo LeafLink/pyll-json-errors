@@ -32,7 +32,7 @@ docs-build-docker:
 	@echo "Building container image..."
 	docker build -t pyll-json-errors .
 	@echo "Generating sphinx docs and outputting to $(SDOCS_DIST_DIR)..."
-	docker run --rm -v $(SDOCS_DIST_DIR)/:/usr/src/app/dist/ --entrypoint make pyll-json-errors:latest docs-build
+	docker run --rm -v $(SDOCS_DIST_DIR)/:/usr/src/app/sdocs/dist/ --entrypoint make pyll-json-errors:latest docs-build
 
 format:
 	@echo "Linting and fixing code..."
