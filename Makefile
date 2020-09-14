@@ -1,27 +1,38 @@
 # Script constants
+PWD=`pwd`
+DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings
+SDOCS_DIST_DIR=$(PWD)/sdocs/dist
+SDOCS_SERVE_DIR=$(PWD)/sdocs/serve
+SDOCS_SOURCE_DIR=$(PWD)/sdocs/src
+SDOCS_PORT=5001
+
 .DEFAULT_GOAL := help
-LOCALHOST=0.0.0.0
-PDOCS_PORT=5001
-PDOCS_OUTPUT_PATH=dist
 
 docs-build:
-	@echo "Building package documentation static assets via PDoc3..."
-	DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings \
-	poetry run pdoc pyll_json_errors --html --template-dir docs/pdoc_templates --output-dir $(PDOCS_OUTPUT_PATH) --force
+	@echo "Build HTML documentation via sphinx..."
+	mkdir -p $(SDOCS_DIST_DIR)
+	make _sphinx-build-html target="$(SDOCS_DIST_DIR)"
 
-docs-server:
-	@echo "Running PDoc3 development server on port $(PDOCS_PORT).."
-	DJANGO_SETTINGS_MODULE=drivers.django_rest_framework.myapi.myapi.settings \
-	poetry run pdoc pyll_json_errors --html --template-dir docs/pdoc_templates --http $(LOCALHOST):$(PDOCS_PORT)
+docs-serve:
+	@echo "Serving HTML documentation on port $(SDOCS_PORT)..."
+	mkdir -p $(SDOCS_SERVE_DIR)
+	make _sphinx-serve-html target="$(SDOCS_SERVE_DIR)"
+
+_sphinx-build-html:
+	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS_MODULE) \
+		poetry run sphinx-build -b html $(SDOCS_SOURCE_DIR) $(target)/html
+
+_sphinx-serve-html:
+	DJANGO_SETTINGS_MODULE=$(DJANGO_SETTINGS_MODULE) \
+		poetry run sphinx-autobuild $(SDOCS_SOURCE_DIR) $(target)/html --port $(SDOCS_PORT)
 
 docs-build-docker:
 	@echo "Cleaning up old ./dist directory..."
-	rm -r ./$(PDOCS_OUTPUT_PATH) || true
-	mkdir ./$(PDOCS_OUTPUT_PATH)
+	rm -r $(SDOCS_DIST_DIR) || true
 	@echo "Building container image..."
 	docker build -t pyll-json-errors .
-	@echo "Generating pdocs and outputting to $(PDOCS_OUTPUT_PATH)..."
-	docker run --rm -v $(PWD)/$(PDOCS_OUTPUT_PATH)/:/usr/src/app/dist/ --entrypoint make pyll-json-errors:latest docs-build
+	@echo "Generating sphinx docs and outputting to $(SDOCS_DIST_DIR)..."
+	docker run --rm -v $(SDOCS_DIST_DIR)/:/usr/src/app/dist/ --entrypoint make pyll-json-errors:latest docs-build
 
 format:
 	@echo "Linting and fixing code..."
@@ -48,12 +59,12 @@ test-ci:
 
 # Help Docs
 help:
-	@echo "  LeafLink Mail Service Commands"
+	@echo "  Make Commands Help Menu"
 	@echo "  |"
 	@echo "  |_ help (default)          - Show this message."
 	@echo "  |_ docs-build              - Build package documentation HTML."
 	@echo "  |_ docs-build-docker       - Build package documentation HTML in Docker. Outputs to ./dist."
-	@echo "  |_ docs-server             - Start a PDocs development server."
+	@echo "  |_ docs-serve              - Start a PDocs development server."
 	@echo "  |_ format                  - Lint code and fix any errors."
 	@echo "  |_ lint                    - Lint code, does not fix any errors."
 	@echo "  |_ test                    - Run unit tests."
@@ -64,7 +75,7 @@ help:
 .PHONY:
 	docs-build
 	docs-build-docker
-	docs-server
+	docs-serve
 	format
 	lint
 	test

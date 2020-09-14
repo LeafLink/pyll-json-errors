@@ -1,6 +1,6 @@
 """Python representations of various JSON API errors objects.
 
-[JSON API Error Format](https://jsonapi.org/format/#error-objects)
+See the `JSON API Error Format <https://jsonapi.org/format/#error-objects>`_ for more information.
 """
 import json
 import math
@@ -32,7 +32,7 @@ class BaseJson(ABC):
 
 
 class JsonErrorSourceParameter(BaseJson):
-    """Represents a parameter type JSON API error `source` object.
+    """Represents a parameter type JSON API error :code:`source` object.
 
     Args:
         parameter (str): The name of the query parameter causing the issue.
@@ -46,33 +46,34 @@ class JsonErrorSourceParameter(BaseJson):
 
 
 class JsonErrorSourcePointer(BaseJson):
-    """Represents a pointer type JSON API error `source` object.
+    """Represents a pointer type JSON API error :code:`source` object.
 
-    Notes: See documentation for `pyll_json_errors.utils.flatten_dict` for more information and example keys.
+    Notes:
+        See documentation for :obj:`pyll_json_errors.utils.flatten_dict` for more information and example keys.
 
     Args:
-       keys (Tuple[str]): An tuple of strings which represents the path of the error in some object.
+       keys (tuple): An tuple of strings which represents the path of the error in some object.
 
     Example:
-        ```python
-        {
-            "one": {
-                "two": ["some error"]
-            }
-            "list": [
-                {
-                    "error": "hello world"
-                },
-                {
-                    "error": "foobar"
-                }
-            ]
-        }
+        .. code-block:: python
 
-        # "some error"'s keys would be ("one", "two")
-        # "hello world"'s keys would be ("list", "0", "error")
-        # "foobar"'s keys would be ("list", "1", "error")
-        ```
+            {
+                "one": {
+                    "two": ["some error"]
+                }
+                "list": [
+                    {
+                        "error": "hello world"
+                    },
+                    {
+                        "error": "foobar"
+                    }
+                ]
+            }
+
+            # "some error"'s keys would be ("one", "two")
+            # "hello world"'s keys would be ("list", "0", "error")
+            # "foobar"'s keys would be ("list", "1", "error")
     """
 
     def __init__(self, *, keys):
@@ -86,9 +87,10 @@ class JsonErrorSourcePointer(BaseJson):
             str: The final stringified pointer.
 
         Example:
-            ```python
+            .. code-block:: python
+
                 JsonErrorSourcePointer(keys=("one", "two", "three")).pointer  # "/one/two/three"
-            ```
+
         """
         return constants.JSON_POINTER_SEPARATOR + constants.JSON_POINTER_SEPARATOR.join(self.keys)
 
@@ -99,19 +101,19 @@ class JsonErrorSourcePointer(BaseJson):
 class JsonError(BaseJson):
     """Represents a single JSON error object.
 
-    Attributes:
-        id (Optional[str]): A unique identifier for this particular occurrence of the problem.
-        status (Optional[str]): The HTTP status code applicable to this problem, expressed as a string value.
-        code (Optional[str]): An application-specific error code, expressed as a string value.
-        title (Optional[str]): A short, human-readable summary of the problem that SHOULD NOT change from occurrence
+    Args:
+        id (str, optional): A unique identifier for this particular occurrence of the problem.
+        status (str, optional): The HTTP status code applicable to this problem, expressed as a string value.
+        code (str, optional): An application-specific error code, expressed as a string value.
+        title (str, optional): A short, human-readable summary of the problem that SHOULD NOT change from occurrence
             to occurrence of the problem.
-        detail (Optional[str]): A human-readable explanation specific to this occurrence of the problem.
-        source (Optional[Union[JsonErrorSourceParameter, JsonErrorSourcePointer]]): An object containing references
-            to the source of the error.
-        meta (Optional[Union[BaseJson, dict]]): Non-standard meta-information about the error.
+        detail (str, optional): A human-readable explanation specific to this occurrence of the problem.
+        source (~pyll_json_errors.models.JsonErrorSourceParameter or ~pyll_json_errors.models.JsonErrorSourcePointer, optional):
+            An object containing references to the source of the error.
+        meta (~pyll_json_errors.models.BaseJson or dict, optional): Non-standard meta-information about the error.
 
     Raises:
-        TypeError: Raised if `source` or `meta` are not the expected types.
+        TypeError: Raised if :code:`source` or :code:`meta` are not the expected types.
     """
 
     def __init__(self, *, id=None, status=None, code=None, title=None, detail=None, source=None, meta=None):
@@ -135,8 +137,8 @@ class JsonError(BaseJson):
 
     def as_dict(self):
         """
-        Converts the object into a dictionary containing only Python primitives. Resulting dictionary will _only_
-        contain keys with values, there will not be any keys with a value of `None`.
+        Converts the object into a dictionary containing only Python primitives. Resulting dictionary will *only*
+        contain keys with values, there will not be any keys with a value of :code:`None`.
 
         Returns:
             dict: Dictionary representation of objects containing only Python primitives.
@@ -162,16 +164,16 @@ class JsonError(BaseJson):
 
 
 class JsonErrorArray(BaseJson):
-    """Representation of multiple `pyll_json_errors.models.JsonError` objects.
+    """Representation of multiple :obj:`~pyll_json_errors.models.JsonError` objects.
 
     Manages various attributes of the top level "errors" JSON API object.
 
 
-    Attributes:
-        errors (List[pyll_json_errors.models.JsonError]): The list of JsonError objects.
+    Args:
+        errors (list): A list of :obj:`~pyll_json_errors.models.JsonError` objects.
         fallback_status (int): The fallback HTTP status code to use for HTTP responses if one cannot be derived from
             provided errors. Defaults to 400.
-        override_status (Optional[int]): If set, this value will always be returned as the status.
+        override_status (int, optional): If set, this value will always be returned as the status.
     """
 
     def __init__(self, errors=[]):
@@ -190,12 +192,14 @@ class JsonErrorArray(BaseJson):
 
     @property
     def status(self):
-        """Get the HTTP status code that represents the collection of JsonErrors as a whole.
+        """
+        Get the HTTP status code that represents the collection of :obj:`~pyll_json_errors.models.JsonErrors`
+        as a whole.
 
-        If `override_status` is set, that is returned.
-        Else, try to derive the status from `errors`. If there is only one error, return that error's status,
+        If :code:`override_status` is set, that is returned.
+        Else, try to derive the status from :code:`errors`. If there is only one error, return that error's status,
         else return the highest status of all errors, rounded down to the nearest 100th.
-        If that does not result in a value, `fallback_status` is returned.
+        If that does not result in a value, :code:`fallback_status` is returned.
 
         Returns:
             int: The HTTP status code.

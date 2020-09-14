@@ -45,7 +45,7 @@ jobs:
           command: |
             UPLOAD_PREFIX="stable"
             if [[ ! -z "${CIRCLE_TAG}" ]]; then
-              UPLOAD_PREFIX="v${CIRCLE_TAG}"
+              UPLOAD_PREFIX="${CIRCLE_TAG}"
               echo "Semver tag detected. Publishing docs accordingly."
             fi
             echo "Publishing documentation for ${UPLOAD_PREFIX}"
@@ -55,7 +55,7 @@ jobs:
               -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
               -v $(pwd)/dist/:/tmp/dist/ \
               leaflinkengineering/llp-awscli:0.3.0 \
-              -c "aws s3 cp /tmp/dist/pyll_json_errors/ s3://${S3_BUCKET_PYLL_ERRORS_DOCS}/json-errors/${UPLOAD_PREFIX}/ --recursive --acl public-read"
+              -c "aws s3 cp /tmp/dist/html/ s3://${S3_BUCKET_PYLL_ERRORS_DOCS}/json-errors/${UPLOAD_PREFIX}/ --recursive --acl public-read"
 
 workflows:
   version: 2
