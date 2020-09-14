@@ -14,15 +14,11 @@ RUN poetry config virtualenvs.create false
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Add dependency files first, for caching
-COPY ./poetry.lock .
-COPY ./pyproject.toml .
+# Add all code
+COPY ./ .
 
 # Install deps
 RUN poetry install -E all
-
-# Add all code
-COPY ./ .
 
 EXPOSE 5001
 

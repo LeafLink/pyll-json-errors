@@ -53,7 +53,7 @@ jobs:
               --entrypoint /bin/bash \
               -e AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}" \
               -e AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}" \
-              -v $(pwd)/dist/:/tmp/dist/ \
+              -v $(pwd)/sdocs/dist/:/tmp/dist/ \
               leaflinkengineering/llp-awscli:0.3.0 \
               -c "aws s3 cp /tmp/dist/html/ s3://${S3_BUCKET_PYLL_ERRORS_DOCS}/json-errors/${UPLOAD_PREFIX}/ --recursive --acl public-read"
 
