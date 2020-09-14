@@ -1,10 +1,29 @@
 # Changelog
 ---
 
-## [0.1.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.2...0.1.3))
+## [0.2.0](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.0) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.3...0.2.0))
+
+### Added
+- Add CI filters back ([dd26f8a](https://github.com/LeafLink/pyll-json-errors/commit/dd26f8a19a22acfbce2ccb6c0426417b24017da8)).
+- Add installation docs ([dcc4ac8](https://github.com/LeafLink/pyll-json-errors/commit/dcc4ac86622b463050f849174ee98a1ea2249696)).
+- Add link to package docs in readme ([c34d4a9](https://github.com/LeafLink/pyll-json-errors/commit/c34d4a94692c671b4015fd23f6561baf65a1430c)).
+
+### Misc
+- Examining Sphinx usage. ([ed98712](https://github.com/LeafLink/pyll-json-errors/commit/ed98712153b5f41b7bf4e8bce3c2b9af9fe91eed)).
+- Figuring out sphinx versioning ([ab43bf3](https://github.com/LeafLink/pyll-json-errors/commit/ab43bf3453ca52052f71de273f9ec3d43b8bb870)).
+- Forgot sdocs sub dir. ([db86d8b](https://github.com/LeafLink/pyll-json-errors/commit/db86d8b5b97f9f988b52b7806e63d716e326be93)).
+- Formatting ([acd4f51](https://github.com/LeafLink/pyll-json-errors/commit/acd4f51a6d222ef8fa4827c988b26f571558f3e6)).
+- I hate sphinx versioning. ([92f9320](https://github.com/LeafLink/pyll-json-errors/commit/92f932019383347b06d2db714003f91dc15d70fb)).
+- Initial sphinx finished ([e6ce7d2](https://github.com/LeafLink/pyll-json-errors/commit/e6ce7d26ff04f18eb8cfce0e0b8dc2410bfac6ea)).
+- testing.. ([a82ab85](https://github.com/LeafLink/pyll-json-errors/commit/a82ab85fba47bb57777bd54955b0326d197129fa)).
+- Update dockerfile to copy all src at once. Needed for poetry and sphinx ([7d2fa37](https://github.com/LeafLink/pyll-json-errors/commit/7d2fa376bff7f8b8f00180b62592d0a5f7f966a6)).
+
+
+## [0.1.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.2...0.1.3)) - 2020-08-27
 
 ### Misc
 - - More adjustments to CircleCI tag triggering ... ([6cf3309](https://github.com/LeafLink/pyll-json-errors/commit/6cf3309259c4f72430e1e981fc5537ed6509203c)).
+- Updated files for release 0.1.3 ([1e97c25](https://github.com/LeafLink/pyll-json-errors/commit/1e97c256bc752eb0cdbcfbc2d68fda60a11a7088)).
 
 
 ## [0.1.2](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.2) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.1...0.1.2)) - 2020-08-27
