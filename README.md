@@ -9,6 +9,7 @@ Python library to implement LeafLink flavored JSON API errors in HTTP APIs.
 
 > It's pronounced "pill".
 
+- [Package Documentation](#package-documentation)
 - [Requirements](#requirements)
 - [Library Documentation](#library-documentation)
 - [Example and Driver Applications](#example-and-driver-applications)
@@ -16,6 +17,11 @@ Python library to implement LeafLink flavored JSON API errors in HTTP APIs.
   * [Flask Driver](#flask-driver)
   * [Marshmallow Driver](#marshmallow-driver)
 - [Contributing](#contributing)
+
+
+## Package Documentation
+
+See https://pyll-dev-docs.leaflink.com/stable/index.html for `pyll-json-errors` package documentation.
 
 
 ## Requirements
