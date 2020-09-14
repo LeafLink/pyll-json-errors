@@ -1,7 +1,13 @@
 # Changelog
 ---
 
-## [0.2.0](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.0) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.3...0.2.0))
+## [0.2.1](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.1) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.0...0.2.1))
+
+### Fixed
+- Fix typo in conf.py ([5a99ecc](https://github.com/LeafLink/pyll-json-errors/commit/5a99eccff6dc7768cd20911789dd50f259782a0f)).
+
+
+## [0.2.0](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.0) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.3...0.2.0)) - 2020-09-14
 
 ### Added
 - Add CI filters back ([dd26f8a](https://github.com/LeafLink/pyll-json-errors/commit/dd26f8a19a22acfbce2ccb6c0426417b24017da8)).
@@ -17,6 +23,7 @@
 - Initial sphinx finished ([e6ce7d2](https://github.com/LeafLink/pyll-json-errors/commit/e6ce7d26ff04f18eb8cfce0e0b8dc2410bfac6ea)).
 - testing.. ([a82ab85](https://github.com/LeafLink/pyll-json-errors/commit/a82ab85fba47bb57777bd54955b0326d197129fa)).
 - Update dockerfile to copy all src at once. Needed for poetry and sphinx ([7d2fa37](https://github.com/LeafLink/pyll-json-errors/commit/7d2fa376bff7f8b8f00180b62592d0a5f7f966a6)).
+- Updated files for release 0.2.0 ([2ea9d89](https://github.com/LeafLink/pyll-json-errors/commit/2ea9d89829e8f5022dda1f02dae7596d91a61549)).
 
 
 ## [0.1.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.1.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.2...0.1.3)) - 2020-08-27
