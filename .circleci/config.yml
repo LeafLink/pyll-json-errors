@@ -56,7 +56,7 @@ workflows:
   version: 2
   ci:
     jobs:
-      - quality_checks:
+      - quality_checks
       - generate_docs:
           context: s3-doc-publishing
           requires:
