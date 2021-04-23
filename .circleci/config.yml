@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   python: circleci/python@0.3.2
-  codecov: codecov/codecov@1.0.2
 
 # Reusable YAML fragments
 setup_remote_docker: &setup_remote_docker
@@ -27,10 +26,6 @@ jobs:
             poetry install -E all
             make lint
             make test-ci
-      - codecov/upload:
-          file: ${PWD}/test-results/coverage.xml
-      - store_test_results:
-          path: test-results
   generate_docs:
     <<: *main_env
     steps:
