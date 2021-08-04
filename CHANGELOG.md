@@ -1,10 +1,22 @@
 # Changelog
 ---
 
-## [0.2.2](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.2) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.1...0.2.2))
+## [0.2.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.2...0.2.3))
+
+### Removed
+- Remove branch and tag filter on CI QC workflow ([6f4b064](https://github.com/LeafLink/pyll-json-errors/commit/6f4b06448e5db8ee99f4ad174a88d1a1274d0f2e)).
+- Removes Codecov from CI ([474c23b](https://github.com/LeafLink/pyll-json-errors/commit/474c23b5da65940e0cd2b7a78f0b4fafe73c9b28)).
+
+### Misc
+- Attempting to figure out packaging... ([8651b08](https://github.com/LeafLink/pyll-json-errors/commit/8651b08adc6fc29a2f0036758ae769c6f1051d5b)).
+- Typo ([6de157d](https://github.com/LeafLink/pyll-json-errors/commit/6de157ddd167b4f5b2f2e52b6902d4ec33ad281b)).
+
+
+## [0.2.2](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.2) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.1...0.2.2)) - 2020-09-14
 
 ### Misc
 - README updates ([4e7026b](https://github.com/LeafLink/pyll-json-errors/commit/4e7026bc91b1369318a0e4c8c89ddf8a6e708c67)).
+- Updated files for release 0.2.2 ([f203166](https://github.com/LeafLink/pyll-json-errors/commit/f20316612e09695dd09c0de2966a1d60ab7bae2b)).
 
 
 ## [0.2.1](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.1) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.1.0...0.2.1)) - 2020-09-14
