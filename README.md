@@ -1,3 +1,4 @@
+<!-- omit in toc -->
 # pyll-json-errors
 
 Python library to implement LeafLink flavored JSON API errors in HTTP APIs.
@@ -9,14 +10,14 @@ Python library to implement LeafLink flavored JSON API errors in HTTP APIs.
 
 > It's pronounced "pill".
 
-- [Package Documentation](#package-documentation)
-- [Requirements](#requirements)
-- [Library Documentation](#library-documentation)
-- [Example and Driver Applications](#example-and-driver-applications)
+* [Package Documentation](#package-documentation)
+* [Requirements](#requirements)
+* [Library Documentation](#library-documentation)
+* [Example and Driver Applications](#example-and-driver-applications)
   * [Django REST Framework](#django-rest-framework)
   * [Flask Driver](#flask-driver)
   * [Marshmallow Driver](#marshmallow-driver)
-- [Contributing](#contributing)
+* [Contributing](#contributing)
 
 
 ## Package Documentation
