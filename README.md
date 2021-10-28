@@ -49,4 +49,4 @@ Basic Marshmallow schema and validation example. Can be ran via: `. ./bin/marshm
 
 ## Contributing
 For guidance of on setting up a development environment and contributing to Pyll JSON Errors see our
-[contributing](https://github.com/LeafLink/pyll-json-errors/blob/master/CONTRIBUTING.md) doc.
+[contributing](https://github.com/LeafLink/pyll-json-errors/blob/main/CONTRIBUTING.md) doc.
