@@ -147,14 +147,14 @@ class DRFTransform(transform.BaseTransform):
             if isinstance(error, dict):
                 # handling a dictionary of suberrors
                 for prop, err in error.items():
-                    _recurse(pointer + [str(prop),], err)
+                    _recurse(pointer + [str(prop)], err)
 
             elif isinstance(error, list):
                 # handle a list of suberrors
                 for num, err in enumerate(error):
                     if isinstance(err, dict):
                         # there are errors nested further within this list item
-                        _recurse(pointer + [str(num),], err)
+                        _recurse(pointer + [str(num)], err)
                     elif isinstance(err, (str, exceptions.ErrorDetail)):
                         # there are no nested errors within this list item
                         _recurse(pointer, err)
@@ -237,7 +237,7 @@ def reformat_response(exc, context):
     if response and isinstance(exc, exceptions.APIException):
         # call the transform
         transform = DRFTransform()
-        error_array = transform.to_array(sources=[exc,])
+        error_array = transform.to_array(sources=[exc])
 
         # return a DRF response, preserving any background work from DRF
         new = make_response(error_array)
