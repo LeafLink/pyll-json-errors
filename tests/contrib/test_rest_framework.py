@@ -84,7 +84,11 @@ def test__drf_transform(exc, formatted):
     above. It tests lists of details, flat errors, and nested lists.
     """
     transform = rest_framework.DRFTransform()
-    error_array = transform.to_array(sources=[exc,])
+    error_array = transform.to_array(
+        sources=[
+            exc,
+        ]
+    )
     assert {"errors": formatted} == error_array.as_dict()
 
 
@@ -95,7 +99,11 @@ def test__complex_error_sample(complex_error_sample):
     inp, outp = complex_error_sample
     transform = rest_framework.DRFTransform()
     exc = ValidationError(inp)
-    json_errors = transform.make_json_errors(sources=[exc,])
+    json_errors = transform.make_json_errors(
+        sources=[
+            exc,
+        ]
+    )
     json_keys = [jerr.source.pointer for jerr in json_errors]
     json_details = [str(jerr.detail) for jerr in json_errors]
 

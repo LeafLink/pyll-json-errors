@@ -62,12 +62,22 @@ html_theme_options = {
     "github_user": "Leaflink",
     "github_repo": "pyll-json-errors",
     "show_powered_by": False,
-    "extra_nav_links": {"GitHub Repo": "https://github.com/LeafLink/pyll-json-errors",},
+    "extra_nav_links": {
+        "GitHub Repo": "https://github.com/LeafLink/pyll-json-errors",
+    },
     "body_text": "#1E164B",
     "link": "#9AD7D0",
     "link_hover": "#3CDBC0",
 }
-html_sidebars = {"**": ["logo.html", "navigation.html", "relations.html", "searchbox.html", "versions.html",]}
+html_sidebars = {
+    "**": [
+        "logo.html",
+        "navigation.html",
+        "relations.html",
+        "searchbox.html",
+        "versions.html",
+    ]
+}
 
 html_context = {
     "github_repo": "LeafLink/pyll-json-errors",

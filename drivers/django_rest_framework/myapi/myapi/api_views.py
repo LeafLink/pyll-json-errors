@@ -139,7 +139,7 @@ def error_400(request):
                 source: {
                     pointer: "/a_list/1/foo"
                 }
-            },    
+            },
             {
                 status: "400",
                 code: "invalid",
