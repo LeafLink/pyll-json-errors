@@ -88,15 +88,9 @@ def get_email_data(
         {"email": "joker@phantomthieves.com", "name": "Protag"},
         {"email": "skull@phantomthieves.com", "name": "Ryuji Sakamoto"},
     ],
-    cc=[
-        {"email": "panther@phantomthieves.com", "name": "Ann Takamaki"},
-    ],
-    to=[
-        {"email": "queen@phantomthieves.com", "name": "Makoto Niijima"},
-    ],
-    reply_to=[
-        {"email": "morgana@phantomthieves.com", "name": "Morgana"},
-    ],
+    cc=[{"email": "panther@phantomthieves.com", "name": "Ann Takamaki"}],
+    to=[{"email": "queen@phantomthieves.com", "name": "Makoto Niijima"}],
+    reply_to=[{"email": "morgana@phantomthieves.com", "name": "Morgana"}],
     subject="Subject",
     body={"text": "A Basic Email", "html": "<em>A Fancy Email</em>"},
 ):
