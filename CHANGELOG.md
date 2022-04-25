@@ -1,7 +1,17 @@
 # Changelog
 ---
 
-## [0.2.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.2...0.2.3))
+## [0.2.4](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.4) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.3...0.2.4))
+
+### Misc
+- linting after updating black ([c5dc0a8](https://github.com/LeafLink/pyll-json-errors/commit/c5dc0a8e9314aa84e15dc65299f8e81fd6199346)).
+- PLAT-2636: Update documentation ([ced6adc](https://github.com/LeafLink/pyll-json-errors/commit/ced6adc24a061ac9a0bbd6d33a7fcba71a2011bd)).
+- PLAT-2916: Remove all old references to CircleCI ([6f574dd](https://github.com/LeafLink/pyll-json-errors/commit/6f574ddfd9e8ed55152820063542d52fd3c419a2)).
+- some changes for better linting results ([b106ef2](https://github.com/LeafLink/pyll-json-errors/commit/b106ef287a4b7dcf0b2f451df3b67ee9317a69a7)).
+- update packages ([a293ff4](https://github.com/LeafLink/pyll-json-errors/commit/a293ff44990b7c3706a2a3d2d6dd81d1e125c66b)).
+
+
+## [0.2.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.2...0.2.3)) - 2021-08-04
 
 ### Removed
 - Remove branch and tag filter on CI QC workflow ([6f4b064](https://github.com/LeafLink/pyll-json-errors/commit/6f4b06448e5db8ee99f4ad174a88d1a1274d0f2e)).
@@ -10,6 +20,7 @@
 ### Misc
 - Attempting to figure out packaging... ([8651b08](https://github.com/LeafLink/pyll-json-errors/commit/8651b08adc6fc29a2f0036758ae769c6f1051d5b)).
 - Typo ([6de157d](https://github.com/LeafLink/pyll-json-errors/commit/6de157ddd167b4f5b2f2e52b6902d4ec33ad281b)).
+- Updated files for release 0.2.3 ([980d6af](https://github.com/LeafLink/pyll-json-errors/commit/980d6af27d741e87e0b6b27037177def19aae2da)).
 
 
 ## [0.2.2](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.2) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.1...0.2.2)) - 2020-09-14
