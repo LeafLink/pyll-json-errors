@@ -18,7 +18,7 @@ jobs:
   quality-checks:
     strategy:
       matrix:
-        python-version: [ ${{ env.PYTHON_VERSION_MIN }} ]
+        python-version: [ 3.6 ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
