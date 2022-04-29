@@ -18,7 +18,7 @@ jobs:
   quality-checks:
     strategy:
       matrix:
-        python-version: [$PYTHON_VERSION_MIN]
+        python-version: [${{ env.PYTHON_VERSION_MIN }}]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
@@ -28,7 +28,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - uses: abatilo/actions-poetry@v2.0.0
         with:
-          poetry-version: $POETRY_VERION
+          poetry-version: ${{ env.POETRY_VERION }}
       - name: Install Dependencies
         run: poetry install -E all
       - name: Lint Code
@@ -42,10 +42,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: $PYTHON_VERSION_MIN
+          python-version: ${{ PYTHON_VERSION_MIN }}
       - uses: abatilo/actions-poetry@v2.0.0
         with:
-          poetry-version: $POETRY_VERION
+          poetry-version: ${{ env.POETRY_VERION }}
       - name: Install Dependencies
         run: poetry install -E all
       - name: Build Docs
