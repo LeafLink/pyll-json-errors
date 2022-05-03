@@ -43,7 +43,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    if:  github.event_name == 'push' || github.event_name == 'pull_request'
+    if:  github.event_name == 'push' || github.event_name == 'release'
     steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
