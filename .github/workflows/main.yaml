@@ -60,7 +60,6 @@ jobs:
       - name: Install Dependencies
         run: |
           poetry install -E all
-          apt-get update && apt-get install -y awscli
       - name: Build Docs
         run: |
           rm -rf ./sdocs/dist || true
