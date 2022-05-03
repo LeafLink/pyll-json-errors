@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Pyll JSON Errors"
-copyright = "2020, LeafLink Engineering"
+copyright = "2022, LeafLink Engineering"
 author = "LeafLink Engineering"
 
 
