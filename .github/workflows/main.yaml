@@ -72,4 +72,7 @@ jobs:
             echo "Semver tag detected. Publishing docs accordingly."
           fi
           echo "Publishing documentation for ${UPLOAD_PREFIX}."
-          aws s3 ls s3://${{ env.S3_BUCKET_PYLL_ERRORS_DOCS }}/json-errors
+          aws s3 cp \
+            ./sdocs/dist/html/ \
+            s3://${S3_BUCKET_PYLL_ERRORS_DOCS}/json-errors/${UPLOAD_PREFIX}/ \
+            --recursive --acl public-read
