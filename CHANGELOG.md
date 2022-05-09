@@ -1,7 +1,26 @@
 # Changelog
 ---
 
-## [0.2.4](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.4) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.3...0.2.4))
+## [0.2.5](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.5) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.4...0.2.5))
+
+### Misc
+- chore: :asf: ([1cab249](https://github.com/LeafLink/pyll-json-errors/commit/1cab249b05aa625f296b1956ea378b88c40975a4)).
+- chore: :asf: ([a25e5d1](https://github.com/LeafLink/pyll-json-errors/commit/a25e5d1779d0aef5b32b3e09bbb963071d704c7d)).
+- chore: :asf: ([f0d66b4](https://github.com/LeafLink/pyll-json-errors/commit/f0d66b450c59e3fd3680d29847abee5a81f01760)).
+- chore: add main filter on push rule ([95aef68](https://github.com/LeafLink/pyll-json-errors/commit/95aef68354038b1963fa0caec0a5b6495adb9d38)).
+- chore: begin work on publish docs job ([b3b7cfa](https://github.com/LeafLink/pyll-json-errors/commit/b3b7cfac2607c17cc2a09990bc50382d15c55ad1)).
+- chore: begin work to move from Circle to GHA ([cf1d975](https://github.com/LeafLink/pyll-json-errors/commit/cf1d9750dacb10ef8f6872a22af80b054b25e004)).
+- chore: cky ([998893a](https://github.com/LeafLink/pyll-json-errors/commit/998893ac01bbacff90fd3718bd263ba75b27caa7)).
+- chore: figuring out aws creds ([cd67ab2](https://github.com/LeafLink/pyll-json-errors/commit/cd67ab29c430d133437f03f13ba54f7ae090629a)).
+- chore: finalize and clean up ([8edabd5](https://github.com/LeafLink/pyll-json-errors/commit/8edabd52ce4fa50aea7fddee05dc170b8ea520a9)).
+- chore: hopeful ([cee5f7c](https://github.com/LeafLink/pyll-json-errors/commit/cee5f7cde931c9a6b193c8c45d8c2b15639b0260)).
+- chore: idk why the fuck aws creds are fucked at every start up ever ([b5150e8](https://github.com/LeafLink/pyll-json-errors/commit/b5150e8890d6bc85015c6bd7b82c356cd8bf33b6)).
+- chore: install deps ([4edf8bb](https://github.com/LeafLink/pyll-json-errors/commit/4edf8bb92220fdf18b9c2b22d0ba75c53ac24044)).
+- chore: typo ([982ad1a](https://github.com/LeafLink/pyll-json-errors/commit/982ad1aeeff7477143ad8b32e30cbc19c55b6106)).
+- PLAT-3431: Update Flask (#29) ([9a4c82f](https://github.com/LeafLink/pyll-json-errors/commit/9a4c82ffdc34ea3648f57bae9f1754aeba969159)).
+
+
+## [0.2.4](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.4) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.3...0.2.4)) - 2022-04-25
 
 ### Misc
 - linting after updating black ([c5dc0a8](https://github.com/LeafLink/pyll-json-errors/commit/c5dc0a8e9314aa84e15dc65299f8e81fd6199346)).
@@ -9,6 +28,7 @@
 - PLAT-2916: Remove all old references to CircleCI ([6f574dd](https://github.com/LeafLink/pyll-json-errors/commit/6f574ddfd9e8ed55152820063542d52fd3c419a2)).
 - some changes for better linting results ([b106ef2](https://github.com/LeafLink/pyll-json-errors/commit/b106ef287a4b7dcf0b2f451df3b67ee9317a69a7)).
 - update packages ([a293ff4](https://github.com/LeafLink/pyll-json-errors/commit/a293ff44990b7c3706a2a3d2d6dd81d1e125c66b)).
+- Updated files for release 0.2.4 ([91081e4](https://github.com/LeafLink/pyll-json-errors/commit/91081e4cfd771aac8927f2ba52ae6310e51f479e)).
 
 
 ## [0.2.3](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.3) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.2...0.2.3)) - 2021-08-04
