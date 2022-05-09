@@ -77,9 +77,9 @@ html_context = {
 # -- InterSphinx Configuration ------------------------------------------------
 
 intersphinx_mapping = {
-    "flask": ("https://flask.palletsprojects.com/en/1.1.x", None),
+    "flask": ("https://flask.palletsprojects.com/en/2.1.x/", None),
     "marshmallow": ("https://marshmallow.readthedocs.io/en/stable/", None),
-    "werkzeug": ("https://werkzeug.palletsprojects.com/en/1.0.x", None),
+    "werkzeug": ("https://werkzeug.palletsprojects.com/en/2.1.x", None),
 }
 
 # -- External Links Configuration ---------------------------------------------
