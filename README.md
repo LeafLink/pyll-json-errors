@@ -23,7 +23,7 @@ See https://pyll-dev-docs.leaflink.com/stable/index.html for `pyll-json-errors` 
 
 
 ## Requirements
-* Python 3.6 or higher
+* Python 3.8 or higher
 
 
 ## Library Documentation

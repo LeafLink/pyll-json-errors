@@ -4,7 +4,7 @@ Installation
 Python Version
 --------------
 
-Pyll JSON Error supports python 3.6 and higher.
+Pyll JSON Error supports python 3.8 and higher.
 
 Install Instructions
 --------------------
