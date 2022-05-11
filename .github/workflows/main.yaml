@@ -13,7 +13,7 @@ env:
   PR_NUMBER: ${{ github.event.number }}
   RELEASE_TAG: ${{ github.event.release.tag_name }}
   POETRY_VERION: 1.1.13
-  PYTHON_VERSION_MIN: 3.6
+  PYTHON_VERSION_MIN: 3.8
   S3_BUCKET_PYLL_ERRORS_DOCS: leaflink-pyll-json-errors-docs-prod
 
 
@@ -21,7 +21,7 @@ jobs:
   quality-checks:
     strategy:
       matrix:
-        python-version: [ 3.6 ]
+        python-version: [ 3.8 ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:

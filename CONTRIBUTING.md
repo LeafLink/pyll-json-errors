@@ -1,7 +1,7 @@
 # Contributing
 
 ## Requirements
-* Python 3.6 or higher
+* Python 3.8 or higher
 * [Git](https://git-scm.com/)
 * [Poetry](https://python-poetry.org/)
 
@@ -9,7 +9,7 @@
 
 ### Prerequisites
 * Ensure you've installed Git and Poetry.
-* Ensure you've installed Python 3.6 or higher.
+* Ensure you've installed Python 3.8 or higher.
   * [PyEnv](https://github.com/pyenv/pyenv) is a great tool to do this.
 
 ### First Time Setup
