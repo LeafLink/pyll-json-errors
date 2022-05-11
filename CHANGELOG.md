@@ -1,7 +1,13 @@
 # Changelog
 ---
 
-## [0.2.5](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.5) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.4...0.2.5))
+## [0.2.6](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.6) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.5...0.2.6))
+
+### Misc
+- PLAT-3455: Update remaining vulnerable dependencies (#30) ([6754af5](https://github.com/LeafLink/pyll-json-errors/commit/6754af5f900a2c2fc3ca876d2ffe58aa027e1c08)).
+
+
+## [0.2.5](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.5) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.4...0.2.5)) - 2022-05-09
 
 ### Misc
 - chore: :asf: ([1cab249](https://github.com/LeafLink/pyll-json-errors/commit/1cab249b05aa625f296b1956ea378b88c40975a4)).
@@ -18,6 +24,7 @@
 - chore: install deps ([4edf8bb](https://github.com/LeafLink/pyll-json-errors/commit/4edf8bb92220fdf18b9c2b22d0ba75c53ac24044)).
 - chore: typo ([982ad1a](https://github.com/LeafLink/pyll-json-errors/commit/982ad1aeeff7477143ad8b32e30cbc19c55b6106)).
 - PLAT-3431: Update Flask (#29) ([9a4c82f](https://github.com/LeafLink/pyll-json-errors/commit/9a4c82ffdc34ea3648f57bae9f1754aeba969159)).
+- Updated files for release 0.2.5 ([ee6bc0f](https://github.com/LeafLink/pyll-json-errors/commit/ee6bc0f2e06c23e8d0b1dea744ac0d405b7f1bd9)).
 
 
 ## [0.2.4](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.4) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.3...0.2.4)) - 2022-04-25
