@@ -17,13 +17,13 @@ Poetry Install
 .. code-block:: bash
 
     # Install stable
-    poetry add "git+https://github.com/LeafLink/pyll-json-errors.git"
+    poetry add "git+https://github.com/LeafLink/pyll-json-errors.git@main"
 
     # Install specific version
     poetry add "git+https://github.com/LeafLink/pyll-json-errors.git@X.Y.Z"
 
     # Install with optional dependency
-    poetry add "git+https://github.com/LeafLink/pyll-json-errors.git" -E all
+    poetry add "git+https://github.com/LeafLink/pyll-json-errors.git@main" -E all
 
 Pip Install
 ^^^^^^^^^^^
