@@ -3,7 +3,7 @@ line-length = 120
 
 [tool.poetry]
 name = "pyll-json-errors"
-version = "0.2.7"
+version = "0.2.8"
 description = "Various helpers to transform popular Python library errors into LeafLink flavored JSON API errors."
 readme = "README.md"
 repository = "https://github.com/LeafLink/pyll-json-errors"

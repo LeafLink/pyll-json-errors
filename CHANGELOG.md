@@ -1,10 +1,17 @@
 # Changelog
 ---
 
-## [0.2.7](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.7) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.6...0.2.7))
+## [0.2.8](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.8) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.7...0.2.8))
+
+### Misc
+- PLAT-3613: + fix to generate-docs flow ([e224698](https://github.com/LeafLink/pyll-json-errors/commit/e224698ae910470bfe37ab3b7cfe9e1b4010c3a2)).
+
+
+## [0.2.7](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.7) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.6...0.2.7)) - 2022-07-08
 
 ### Misc
 - PLAT-3613: + PPP integration ([db43cfd](https://github.com/LeafLink/pyll-json-errors/commit/db43cfddf520b7a10d1982e587f1792349ee4f17)).
+- Updated files for release 0.2.7 ([6366849](https://github.com/LeafLink/pyll-json-errors/commit/6366849b99440b952b6f7da57004b123a6f0cd09)).
 
 
 ## [0.2.6](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.6) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.5...0.2.6)) - 2022-05-11
