@@ -1,10 +1,17 @@
 # Changelog
 ---
 
-## [0.2.6](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.6) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.5...0.2.6))
+## [0.2.7](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.7) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.6...0.2.7))
+
+### Misc
+- PLAT-3613: + PPP integration ([db43cfd](https://github.com/LeafLink/pyll-json-errors/commit/db43cfddf520b7a10d1982e587f1792349ee4f17)).
+
+
+## [0.2.6](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.6) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.5...0.2.6)) - 2022-05-11
 
 ### Misc
 - PLAT-3455: Update remaining vulnerable dependencies (#30) ([6754af5](https://github.com/LeafLink/pyll-json-errors/commit/6754af5f900a2c2fc3ca876d2ffe58aa027e1c08)).
+- Updated files for release 0.2.6 ([554abde](https://github.com/LeafLink/pyll-json-errors/commit/554abde28dc373d406f3c89355ed4b7d5c009a30)).
 
 
 ## [0.2.5](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.5) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.4...0.2.5)) - 2022-05-09
