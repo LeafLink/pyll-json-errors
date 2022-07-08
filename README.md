@@ -5,6 +5,8 @@ Python library to implement LeafLink flavored JSON API errors in HTTP APIs.
 
 ---
 
+[![llp-ci](https://github.com/LeafLink/pyll-json-errors/actions/workflows/main.yaml/badge.svg)](https://github.com/LeafLink/pyll-json-errors/actions/workflows/main.yaml)
+
 > It's pronounced "pill".
 
 * [Package Documentation](#package-documentation)
@@ -25,6 +27,10 @@ See https://pyll-dev-docs.leaflink.com/stable/index.html for `pyll-json-errors` 
 ## Requirements
 * Python 3.8 or higher
 
+## Installation
+Version 0.2.6 and lower are available via GitHub releases.
+
+Version 0.2.7 and up are available via the LeafLink Private Python Package repository. Documentation located [here](https://leaflink.atlassian.net/wiki/spaces/EN/pages/2359559238/How+To+Private+Python+Packages)
 
 ## Library Documentation
 See the library's integration docs [here](https://pyll-dev-docs.leaflink.com/stable/index.html).
