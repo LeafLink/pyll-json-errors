@@ -8,6 +8,10 @@ on:
   release:
     types: [published]
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   AWS_DEFAULT_REGION: us-west-2
   PR_NUMBER: ${{ github.event.number }}
@@ -26,18 +30,24 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: LeafLink/ci-tools/python-setup@main
         with:
+          aws-role-arn: arn:aws:iam::642296112925:role/llp-gha-reader
+          aws-codeartifact-repo: leaflink-pypi
           python-version: ${{ matrix.python-version }}
-      - uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: ${{ env.POETRY_VERION }}
+          poetry-version: ${{ env.POETRY_VERSION }}
       - name: Install Dependencies
-        run: poetry install -E all
+        run: |
+          source $HOME/.poetry/env
+          poetry install -E all
       - name: Lint Code
-        run: make lint
+        run: |
+          source $HOME/.poetry/env
+          make lint
       - name: Test Code
-        run: make test-ci
+        run: |
+          source $HOME/.poetry/env
+          make test-ci
   generate-docs:
     runs-on: ubuntu-latest
     permissions:
@@ -51,14 +61,15 @@ jobs:
           role-to-assume: ${{ secrets.PYLL_JSON_ERRORS_CI_ROLE_ARN }}
           aws-region: ${{ env.AWS_DEFAULT_REGION }}
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: LeafLink/ci-tools/python-setup@main
         with:
-          python-version: ${{ env.PYTHON_VERSION_MIN }}
-      - uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: ${{ env.POETRY_VERION }}
+          aws-role-arn: arn:aws:iam::642296112925:role/llp-gha-reader
+          aws-codeartifact-repo: leaflink-pypi
+          python-version: ${{ matrix.python-version }}
+          poetry-version: ${{ env.POETRY_VERSION }}
       - name: Install Dependencies
         run: |
+          source $HOME/.poetry/env
           poetry install -E all
       - name: Build Docs
         run: |

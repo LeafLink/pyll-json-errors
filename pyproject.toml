@@ -22,6 +22,16 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
 ]
 
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "semver"
+pattern  = "^(?P<base>\\d+\\.\\d+\\.\\d+)(-?((?P<stage>[a-zA-Z]+)\\.?(?P<revision>\\d+)?))?"
+
+[[tool.poetry.source]]
+name = "leaflink-pypi"
+url = "https://leaflink-642296112925.d.codeartifact.us-west-2.amazonaws.com/pypi/leaflink-pypi/simple/"
+
 [tool.poetry.dependencies]
 python = "^3.8"
 Flask = { version = "^2.1.2", optional = true }
