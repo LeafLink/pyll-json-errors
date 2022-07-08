@@ -55,11 +55,6 @@ jobs:
       contents: read
     if:  github.event_name == 'push' || github.event_name == 'release'
     steps:
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: ${{ secrets.PYLL_JSON_ERRORS_CI_ROLE_ARN }}
-          aws-region: ${{ env.AWS_DEFAULT_REGION }}
       - uses: actions/checkout@v2
       - uses: LeafLink/ci-tools/python-setup@main
         with:
@@ -67,14 +62,21 @@ jobs:
           aws-codeartifact-repo: leaflink-pypi
           python-version: ${{ matrix.python-version }}
           poetry-version: ${{ env.POETRY_VERSION }}
+          purge-aws-session: true
       - name: Install Dependencies
         run: |
           source $HOME/.poetry/env
           poetry install -E all
       - name: Build Docs
         run: |
+          source $HOME/.poetry/env
           rm -rf ./sdocs/dist || true
           make docs-build
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.PYLL_JSON_ERRORS_CI_ROLE_ARN }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
       - name: Publish Docs
         run: |
           UPLOAD_PREFIX="stable"
