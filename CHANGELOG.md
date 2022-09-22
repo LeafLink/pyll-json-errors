@@ -1,10 +1,18 @@
 # Changelog
 ---
 
-## [0.2.8](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.8) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.7...0.2.8))
+## [0.2.9](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.9) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.8...0.2.9))
+
+### Misc
+- Update README.md ([308d2ab](https://github.com/LeafLink/pyll-json-errors/commit/308d2ab7c09938dc0902fe09c7819adb92ff6452)).
+- Update to Poetry 1.2 ([506f7d0](https://github.com/LeafLink/pyll-json-errors/commit/506f7d04d6a9fe21f75b72be7650c5b6a11d0d06)).
+
+
+## [0.2.8](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.8) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.7...0.2.8)) - 2022-07-08
 
 ### Misc
 - PLAT-3613: + fix to generate-docs flow ([e224698](https://github.com/LeafLink/pyll-json-errors/commit/e224698ae910470bfe37ab3b7cfe9e1b4010c3a2)).
+- Updated files for release 0.2.8 ([99df863](https://github.com/LeafLink/pyll-json-errors/commit/99df863225710ebfa42110d632d1cb70b7003594)).
 
 
 ## [0.2.7](https://github.com/LeafLink/pyll-json-errors/releases/tag/0.2.7) ([compare](https://github.com/LeafLink/pyll-json-errors/compare/0.2.6...0.2.7)) - 2022-07-08
