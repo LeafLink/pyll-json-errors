@@ -38,15 +38,12 @@ jobs:
           poetry-version: ${{ env.POETRY_VERSION }}
       - name: Install Dependencies
         run: |
-          source $HOME/.poetry/env
           poetry install -E all
       - name: Lint Code
         run: |
-          source $HOME/.poetry/env
           make lint
       - name: Test Code
         run: |
-          source $HOME/.poetry/env
           make test-ci
   generate-docs:
     runs-on: ubuntu-latest
@@ -65,11 +62,9 @@ jobs:
           purge-aws-session: true
       - name: Install Dependencies
         run: |
-          source $HOME/.poetry/env
           poetry install -E all
       - name: Build Docs
         run: |
-          source $HOME/.poetry/env
           rm -rf ./sdocs/dist || true
           make docs-build
       - name: Configure AWS Credentials
