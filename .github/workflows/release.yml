@@ -2,18 +2,33 @@ name: release
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  build-and-publish-wheel:
-    runs-on: ubuntu-latest
+  release:
+    runs-on: [self-hosted, leaflink-dev-general-runner]
+    outputs:
+      version: ${{ steps.release.outputs.release-version }}
+      new-release-published: ${{ steps.release.outputs.new-release-published }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.LEAFLINK_AUTOMATION_PAT }}
+
+      - uses: LeafLink/ci-tools/semantic-release@main
+        id: release
+        with:
+          has-helm-chart: 'false'
+          has-container: 'false'
+          has-pyproject-toml: true
+          github-token: ${{ secrets.LEAFLINK_AUTOMATION_PAT }}
+
       - uses: LeafLink/ci-tools/python-release@main
         with:
           aws-role-arn: arn:aws:iam::642296112925:role/llp-gha-writer

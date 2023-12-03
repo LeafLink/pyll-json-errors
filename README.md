@@ -1,6 +1,9 @@
 <!-- omit in toc -->
 # pyll-json-errors
 
+[![Contact Us](https://img.shields.io/badge/slack-%23pod--nap-pink.svg?logo=slack)](https://leaflink.slack.com/archives/C055KDEDUNQ)
+[![Released via semantic-release with PR titles](https://img.shields.io/badge/release_method-semantic_release_via_PR_titles-blue)](https://leaflink.atlassian.net/wiki/spaces/DEVOPS/pages/2828566530/Releasing+applications+with+semantic-release+via+PR+titles)
+
 Python library to implement LeafLink flavored JSON API errors in HTTP APIs.
 
 ---
