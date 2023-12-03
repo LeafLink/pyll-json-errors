@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         python-version: [ 3.8 ]
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, leaflink-dev-general-runner]
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
