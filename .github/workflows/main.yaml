@@ -30,6 +30,8 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.LEAFLINK_AUTOMATION_PAT }}
       - uses: LeafLink/ci-tools/python-setup@main
         with:
           aws-role-arn: arn:aws:iam::642296112925:role/llp-gha-reader
@@ -53,6 +55,8 @@ jobs:
     if:  github.event_name == 'push' || github.event_name == 'release'
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.LEAFLINK_AUTOMATION_PAT }}
       - uses: LeafLink/ci-tools/python-setup@main
         with:
           aws-role-arn: arn:aws:iam::642296112925:role/llp-gha-reader
