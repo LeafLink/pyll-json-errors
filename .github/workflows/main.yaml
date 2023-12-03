@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: LeafLink/ci-tools/python-setup@main
         with:
           aws-role-arn: arn:aws:iam::642296112925:role/llp-gha-reader
@@ -52,7 +52,7 @@ jobs:
       contents: read
     if:  github.event_name == 'push' || github.event_name == 'release'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: LeafLink/ci-tools/python-setup@main
         with:
           aws-role-arn: arn:aws:iam::642296112925:role/llp-gha-reader
