@@ -2,7 +2,7 @@ name: lint-pr-title
 
 on:
   pull_request:
-    types: [edited, opened, reopened]
+    types: [edited, opened, reopened, synchronize]
 
 permissions:
   id-token: write
